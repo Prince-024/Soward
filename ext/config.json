@@ -1,0 +1,9 @@
+{ 
+    "token": "MTAwOTAyNDc2MDkxNjc0NjI3MQ.GfGyg5.thwGc80CYvtWycjdGYk8QwT_Atzjal4qigMoSc",
+    "lavalink": {
+        "host": "lava.link",
+        "port": 80,
+        "password": "Raccoon",
+        "identifier": "MAIN"
+    }
+}

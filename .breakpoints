@@ -1,0 +1,28 @@
+{
+  "files": {
+    "cogs/general.py": [
+      {
+        "id": "0f73e177-a517-406e-bbb4-14a0965b748d",
+        "line": 4,
+        "version": 1,
+        "index": 42
+      }
+    ],
+    "core/Apolex.py": [
+      {
+        "id": "0a6ef120-7ff7-4678-bb66-7b6d29db137c",
+        "line": 1,
+        "version": 1,
+        "index": 0
+      }
+    ],
+    "main.py": [
+      {
+        "id": "7bdcc12a-40b2-4d96-9f65-59e79e0c75ae",
+        "line": 44,
+        "version": 669,
+        "index": 992
+      }
+    ]
+  }
+}

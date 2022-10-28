@@ -1,0 +1,224 @@
+U
+    q bf:                      @   sR   d dl Z d dlZd dlmZ d dlZd dlZd dlZG dd  dej  Zdd  Z	dS )      N) commandsc                   @   s   e Zd Zdd  Zej   dd   Z e   dd   Z	e 
+  d d   Z
+e
+   d	d
+   Ze   d
+d   Z
+ejd
+d   Ze
+   dd   Ze
+   dd   Ze
+jdgd ejd dd  Ze
+jdgd ejd dd  Ze
+   dd   Ze
+   dd   Ze
+   dd    Zd!S )" voicec                 C   s
+   || _ d S  N  bot) selfr     r    2/home/runner/VoiceMaster-Discord-Bot/cogs/voice.py __init__
+   s    zvoice.__init__c                     s`  t  d }|   }|jj}| d|f  |   } | d kr< n| d } z |j j|k r<| d|jf  |   }	|	d krxn | d I d H  t	 
+d I d H  | d |f  |   } | d|jf  |   }
+| d	|f  |   }
+|
+d k r|j
+  d
+ }|
+d k rd}
+n|
+d }
+nV|
+d k r(|
+d }|
+d
+ }
+n:|
+d k	 rR|
+d
+ dk rR|
+d }|
+d }
+n|
+d }|
+d
+ }
+| d }|j}| j 
+| }|jj||d I d H     j}|    I d H    j| jjd
+d
+d I d H    j||
+d I d H  | d||f  |      fdd }| jjd|d I d H       I d H  t	 
+d I d H  | d|f  W n   Y nX |    |    d S )N voice.db 2SELECT voiceChannelID FROM guild WHERE guildID = ?r   z+SELECT * FROM voiceChannel WHERE userID = ?zFCreating channels too quickly you've been put on a 15 second cooldown!    z3SELECT voiceCategoryID FROM guild WHERE guildID = ?zCSELECT channelName, channelLimit FROM userSettings WHERE userID = ?z8SELECT channelLimit FROM guildSettings WHERE guildID = ? 
+'s channel      categoryT   connect 
+read_messages) name 
+user_limitz&INSERT INTO voiceChannel VALUES (?, ?)c                    s   t   j dkS )Nr   ) len  members) a b c  channel2r   r	    checkA   s    z*voice.on_voice_state_update.<locals>.check voice_state_update)r       z'DELETE FROM voiceChannel WHERE userID=?)  sqlite3r    cursor guild id  execute fetchone  channel send  asyncio sleepr   r    
+get_channel create_voice_channel  move_to set_permissions user edit commit wait_for delete close)r     member before after connr     guildIDr   Z voiceID cooldownZ settingZguildSettingr    limitZ
+categoryIDr$   r    	channelIDr   r   r   r	    on_voice_state_update
+   sl    
+
+
+
+
+
+
+zvoice.on_voice_state_updatec                     sd   t jdddd }|j|jjj  d|jjj  d  |j d dd	d
+  |jd
+d  |j	j
+|d
+ I d H  d S )NZHelp  iډr ) title 
+description colorz.https://discordbots.org/bot/472911936951156740)r    url icon_urlz**Commands**aO  **Lock your channel by using the following command:**
+
+`.voice lock`
+
+------------
+
+**Unlock your channel by using the following command:**
+
+`.voice unlock`
+
+------------
+
+**Change your channel name by using the following command:**
+
+`.voice name <name>`
+
+**Example:** `.voice name EU 5kd+`
+
+------------
+
+**Change your channel limit by using the following command:**
+
+`.voice limit number`
+
+**Example:** `.voice limit 2`
+
+------------
+
+**Give users permission to join by using the following command:**
+
+`.voice permit @person`
+
+**Example:** `.voice permit @Sam#9452`
+
+------------
+
+**Claim ownership of channel once the owner has left:**
+
+`.voice claim`
+
+**Example:** `.voice claim`
+
+------------
+
+**Remove permission and the user from your channel using the following command:**
+
+`.voice reject @person`
+
+**Example:** `.voice reject @Sam#9452`
+
+ false)r    value inlinezBot developed by Sam#9452) text) embed)
+  discord Embed 
+set_authorr#    me display_name 
+avatar_url 	add_field 
+set_footerr'   r(   )r     ctxrH   r   r   r	    helpL   s       z
+voice.helpc                     s   d S r   r   )r    rQ   r   r   r	   r   Z   s    z
+voice.voicec           
+          s   t  d }|   }  jj}  jj}  jj  jjk r  fdd }  j  d I d H    j  d I d H  z| j	j
+d|d d I d H } W n* t
+jk
+r      j  d	 I d H  Y  q X   j 
+| j I d H }  j  d
+ I d H  z| j	j
+d|d d I d H }	W n* t
+jk
+ r     j  d	 I d H  Y n X z  jj|	j|d
+ I d H }	| d||f  |   }
+|
+d k rp| d
+|||	j|jf  n| d|||	j|j|f    j  d I d H  W n     j  d I d H  Y nX n  j    jj  d  I d H  |    |    d S )Nr
+   c                    s   | j j  j jkS r   ) authorr$   ) m rQ   r   r	   r   e   s    zvoice.setup.<locals>.checkz0**You have 60 seconds to answer each question!**zZ**Enter the name of the category you wish to create the channels in:(e.g Voice Channels)**  messageg      N@)r     timeoutzTook too long to answer!z=**Enter the name of the voice channel: (e.g Join To Create)**r   z3SELECT * FROM guild WHERE guildID = ? AND ownerID=?z%INSERT INTO guild VALUES (?, ?, ?, ?)zdUPDATE guild SET guildID = ?, ownerID = ?, voiceChannelID = ?, voiceCategoryID = ? WHERE guildID = ?z&**You are all setup and ready to go!**z>You didn't enter the names properly.
+Use `.voice setup` again! 0 only the owner of the server can setup the bot!)r!   r   r"   r#   r$   rS    owner_idr'   r(   r   r2   r)    TimeoutError create_category_channel  contentr,   r%   r&     mentionr1   r4   )
+r    rQ   r8   r   r9   r$   r   r   Z new_catr'   r   r   rU   r	    setup^   s>    
+
+z
+voice.setupc                     s    t  d }|   }|jj|jjjkr |  d|jjf  |   }|d krh|  d|jj|jj	  d |f  n|  d||jjf  | 
+d I d H  n|j
+ 
+|jj  d   I d H  | 
+   |    d S )Nr
+   z-SELECT * FROM guildSettings WHERE guildID = ?z*INSERT INTO guildSettings VALUES (?, ?, ?)r   z;UPDATE guildSettings SET channelLimit = ? WHERE guildID = ?z;You have changed the default channel limit for your server!rX   )r!   r   r"   rS   r$   r#    ownerr%   r&   r   r(   r'   r]   r1   r4   )r    rQ    numr8   r   r   r   r   r	    setlimit    s    
+"zvoice.setlimitc                     s   t |  d S r   ) print)r    rQ    errorr   r   r	    
+info_error    s    zvoice.info_errorc           	          s    t  d }|   }|jj}| d|f  |   }|d krV|j  |jj	  d  I d H  nL|d }|j
+j
+} | j 
+| }|j| dd I d H  |j  |jj	  d   I d H  |    |    d S )Nr
+    1SELECT voiceID FROM voiceChannel WHERE userID = ?  You don't own a channel.r   F r   u    Voice chat locked! 🔒 r!   r   r"   rS   r$   r%   r&   r'   r(   r]   r#    default_roler   r+   r.   r1   r4    	r    rQ   r8   r   r$   r   r<    roler'   r   r   r	    lock    s    
+z
+voice.lockc           	          s    t  d }|   }|jj}| d|f  |   }|d krV|j  |jj	  d  I d H  nL|d }|j
+j
+} | j 
+| }|j| dd I d H  |j  |jj	  d   I d H  |    |    d S )Nr
+   re   rf   r   Trg   u    Voice chat unlocked! 🔓rh   rj   r   r   r	    unlock    s    
+zvoice.unlock allow)  aliases)r5   c           	          s    t  d }|   }|jj}| d|f  |   }|d krV|j  |jj	  d  I d H  nL|d } | j
+ 
+|  }|j|dd I d H  |j  |jj	  d |j
+  d  I d H  |    |    d S )	Nr
+   re   rf   r   Trg   z You have permited u#    to have access to the channel. ✅)r!   r   r"   rS   r$   r%   r&   r'   r(   r]   r   r+   r.   r   r1   r4   )	r    rQ   r5   r8   r   r$   r   r<   r'   r   r   r	    permit    s    
+$zvoice.permit denyc                     s  t  d }|   }|jj}|jj}| d|f  |    } | d kr^|j 	|jj
+  d  I d H  n | d }| j
+ | }	|	j
+D ]F}
+|
+j|jkrx| d|f  |    } | j
+ | d  }
+| |
+ I d H  qx|	j|dd d I d H  |j 	|jj
+  d	|j  d
+  I d H  |    |    d S )
+Nr
+   re   rf   r   r   FTr   z You have rejected u     from accessing the channel. ❌)r!   r   r"   rS   r$   r#   r%   r&   r'   r(   r]   r   r+   r   r-   r.   r   r1   r4   )r    rQ   r5   r8   r   r$   r9   r   r<   r'   r   r   r   r   r	    reject    s(    
+
+$zvoice.rejectc           	          s    t  d }|   }|jj}| d|f  |   }|d krV|j  |jj	  d  I d H  n |d } | j
+ 
+|  }|j|d I d H  |j  |jj	  d d  
+|   I d H  | d|f  |   }|d kr | d	||jj  |f  n| d
+||f  |    |    d S )
+Nr
+   re   rf   r   )r   z& You have set the channel limit to be  {}! 5SELECT channelName FROM userSettings WHERE userID = ? )INSERT INTO userSettings VALUES (?, ?, ?)z9UPDATE userSettings SET channelLimit = ? WHERE userID = ?)r!   r   r"   rS   r$   r%   r&   r'   r(   r]   r   r+   r0    formatr   r1   r4   )	r    rQ   r;   r8   r   r$   r   r<   r'   r   r   r	   r;       s$    
+&z
+voice.limitc          	          s    t  d }|   }|jj}| d|f  |   }|d krV|j  |jj	  d  I d H  n |d } | j
+ 
+|  }|j|d I d H  |j  |jj	  d d  
+|   I d H  | d|f  |   }|d kr | d	||df  n| d
+||f  |    |    d S )
+Nr
+   re   rf   r   )r   z& You have changed the channel name to rs   rt   ru   z8UPDATE userSettings SET channelName = ? WHERE userID = ?)r!   r   r"   rS   r$   r%   r&   r'   r(   r]   r   r+   r0   rv   r1   r4   )	r    rQ   r   r8   r   r$   r   r<   r'   r   r   r	   r     s$    
+&z
+voice.namec           
+           s*  d}t  d }|   }|jjj}|d krF|j |jj   d  I d H  n |jj}| 	d|jf  | 
+  } | d kr |j |jj   d  I d H  n |j
+D ]J}|j| d kr |j 
+| d  }	|j |jj   d |	j   d  I d H  d	}q |dk r|j |jj   d
+  I d H  | 	d
+||jf  |    |    d S )NFr
+   z you're not in a voice channel.z1SELECT userID FROM voiceChannel WHERE voiceID = ?z You can't own that channel!r   z" This channel is already owned by  !Tz& You are now the owner of the channel!z4UPDATE voiceChannel SET userID = ? WHERE voiceID = ?)r!   r   r"   rS   r   r'   r(   r]   r$   r%   r&   r   r#    
+get_memberr1   r4   )
+r    rQ    xr8   r   r'   r$   r    datar_   r   r   r	    claim  s*    
+
+
+$
+z
+voice.claimN) __name__ 
+__module__ __qualname__r
+   r    Cog listenerr=     commandrR    groupr   r^   ra   rc   rd   rl   rm   rI    Memberrp   rr   r;   r   r{   r   r   r   r	   r   	   s6   
+>
+
+
+
+&
+
+
+
+
+
+r   c                 C   s   |   t|    d S r   )  add_cogr   r   r   r   r	   r^   3  s    r^   )
+rI   r)    
+discord.extr    	tracebackr!    
+validatorsr   r   r^   r   r   r   r	    <module>   s     ,
