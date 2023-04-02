@@ -5,7 +5,7 @@ import asyncio
 import aiohttp
 import json
 import re
-from core.Soward import Soward
+#from core.Soward import Soward
 from simpcalc import simpcalc
 from discord.ext import commands, tasks
 from discord.utils import escape_markdown
@@ -133,7 +133,7 @@ class InteractiveView(discord.ui.View):
 
 
 class lodu(commands.Cog, description="Commands that make your Discord experience nicer!"):
-    def __init__(self, client: Soward):
+    def __init__(self, client):
         self.client = client
      #   self.reminding.start()
         self.regex = re.compile(r"(\w*)\s*(?:```)(\w*)?([\s\S]*)(?:```$)")

@@ -33,7 +33,7 @@ class Api(commands.Cog):
         embed = discord.Embed(
           title = f"Random {animal.title()} Fact",
           description = obj["fact"],
-          color = 0x2f3136,
+          color = 0xFF1B1B,
           timestamp = datetime.datetime.utcnow()
         )
         await ctx.send(embed=embed)
@@ -58,7 +58,7 @@ class Api(commands.Cog):
         embed = discord.Embed(
           title = f"Random {animal.title()} Image",
           description = obj["link"],
-          color = 0x2f3136,
+          color = 0xFF1B1B,
           timestamp = datetime.datetime.utcnow()
         )
         embed.set_image(url=obj["link"])
@@ -74,7 +74,7 @@ class Api(commands.Cog):
     embed = discord.Embed(
       title = "Random Winking Gif",
       description = obj["link"],
-      color = 0x2f3136,
+      color = 0xFF1B1B,
       timestamp = datetime.datetime.utcnow()
     )
     embed.set_image(url=obj["link"])
@@ -90,7 +90,7 @@ class Api(commands.Cog):
     embed = discord.Embed(
       title = "Random Patting Gif",
       description = obj["link"],
-      color = 0x2f3136,
+      color = 0xFF1B1B,
       timestamp = datetime.datetime.utcnow()
     )
     embed.set_image(url=obj["link"])
@@ -100,13 +100,13 @@ class Api(commands.Cog):
   @blacklist_check()
   async def hug(self, ctx):
     """Get a random hugging gif."""
-    url = "https://some-random-api.ml/animu/pat"
+    url = "https://some-random-api.ml/animu/hug"
     response = urllib.request.urlopen(url).read().decode()
     obj = json.loads(response)
     embed = discord.Embed(
       title = f"",
       description = obj["link"],
-      color = 0x2f3136,
+      color = 0xFF1B1B,
       timestamp = datetime.datetime.utcnow()
     )
     embed.set_image(url=obj["link"])
@@ -129,7 +129,7 @@ class Api(commands.Cog):
 
       embed = discord.Embed(
         title = f"{men}'s pfp being gayified",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -152,7 +152,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s pfp being glassed",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -175,7 +175,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men} just got wasted",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -198,7 +198,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men} just got grayed out",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -221,7 +221,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men} just got inverted",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -244,7 +244,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men} just got invertgreyscaled",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -267,7 +267,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men} just got thresholded",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -290,7 +290,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s pfp but more sepia",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -313,7 +313,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s pfp but more red",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -336,7 +336,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s pfp but more green",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -359,7 +359,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s pfp but more blue",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -382,7 +382,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s pfp but more blurple",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -405,7 +405,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s blurred pfp",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -428,7 +428,7 @@ class Api(commands.Cog):
         
       embed = discord.Embed(
         title = f"{men}'s pixelated pfp",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.set_image(url=url)
@@ -444,7 +444,7 @@ class Api(commands.Cog):
     embed = discord.Embed(
       title = "Random Face-Palming Gif",
       description = obj["link"],
-      color = 0x2f3136,
+      color = 0xFF1B1B,
       timestamp = datetime.datetime.utcnow()
     )
     embed.set_image(url=obj["link"])
@@ -470,7 +470,7 @@ class Api(commands.Cog):
         embed = discord.Embed(
           title = obj["name"].title(),
           description = obj["description"],
-          color = 0x2f3136,
+          color = 0xFF1B1B,
           timestamp = datetime.datetime.utcnow()
         )
         embed.add_field(name="ID", value=obj["id"])

@@ -34,7 +34,7 @@ class timer(commands.Cog):
                 embed = discord.Embed(
                     title=f'{title}',
                     description=f"**{time//3600}** hours, **{time%3600//60}** minutes, **{time%60}** seconds",
-                    color=0x2f3136
+                    color=0xFF1B1B
                 )
                 embed.set_footer(text='Soward')
                 message = await ctx.send(embed=embed)
@@ -43,7 +43,7 @@ class timer(commands.Cog):
                 embed = discord.Embed(
                     title=f'{title}',
                     description=f"**{time//60}** minutes, **{time%60}** seconds",
-                    color=0x2f3136
+                    color=0xFF1B1B
                 )
                 embed.set_footer(text='Soward')
                 message = await ctx.send(embed=embed)
@@ -52,7 +52,7 @@ class timer(commands.Cog):
                 embed = discord.Embed(
                     title=f'{title}',
                     description=f'**{time}** seconds',
-                    color=0x2f3136
+                    color=0xFF1B1B
                 )
                 embed.set_footer(text='Soward')
                 message = await ctx.send(embed=embed)
@@ -65,7 +65,7 @@ class timer(commands.Cog):
                         embed = discord.Embed(
                             title=f'{title}',
                             description=f"**{time//3600}** hours, **{time%3600//60}** minutes, **{time%60}** seconds",
-                            color=0x2f3136
+                            color=0xFF1B1B
                         )
                         embed.set_footer(text='Soward')
                         await message.edit(embed=embed)
@@ -73,7 +73,7 @@ class timer(commands.Cog):
                         embed = discord.Embed(
                             title=f'{title}',
                             description=f"**{time//60}** minutes, **{time%60}** seconds",
-                            color=0x2f3136
+                            color=0xFF1B1B
                         )
                         embed.set_footer(text='Soward')
                         await message.edit(embed=embed)
@@ -81,7 +81,7 @@ class timer(commands.Cog):
                         embed = discord.Embed(
                             title=f'{title}',
                             description=f"**{time}** seconds",
-                            color=0x2f3136
+                            color=0xFF1B1B
                         )
                         embed.set_footer(text='Soward')
                         await message.edit(embed=embed)
@@ -89,7 +89,7 @@ class timer(commands.Cog):
                         embed = discord.Embed(
                             title=f'{title}',
                             description='Time\'s up!',
-                            color=0x2f3136
+                            color=0xFF1B1B
                         )
                         await message.edit(embed=embed)
                         m = await ctx.channel.fetch_message(message.id)
@@ -114,7 +114,7 @@ class timer(commands.Cog):
     @timer.error
     async def timer_error(self, ctx, error):
       if isinstance(error, commands.CommandOnCooldown):
-        embed = discord.Embed(title = "Take a breather...", description = "You have to wait **{:.2f} seconds**\nThe cooldown for this command is `30s`".format(error.retry_after), color = discord.Color(0x2f3136))
+        embed = discord.Embed(title = "Take a breather...", description = "You have to wait **{:.2f} seconds**\nThe cooldown for this command is `30s`".format(error.retry_after), color = discord.Color(0xFF1B1B))
         await ctx.send(embed=embed, delete_after=30)
 
 

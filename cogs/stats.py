@@ -1,11 +1,9 @@
 from discord.ext import commands
-#from core import Darkz, Cog, Context
 from utilities.Tools import *
 import discord, psutil, pathlib, shutil, os, sys
 from discord.ui import View, Button
 from typing import Optional
 from discord.ext.commands import Cog
-from core.Soward import Soward
 import asyncio
 def get_ram_usage():
     return int(psutil.virtual_memory().total - psutil.virtual_memory().available)
@@ -17,7 +15,7 @@ def get_ram_total():
 
 class Extra(Cog):
   """Some extra commands which can't be listed in Moderation group are listed here."""
-  def __init__(self, client: Soward):
+  def __init__(self, client):
     self.client = client
 
 
@@ -61,7 +59,7 @@ class Extra(Cog):
 
     total, used, free = shutil.disk_usage("/")
 
-    embed=discord.Embed(title="**Soward Stats**",color=0x2f3136, timestamp=ctx.message.created_at)
+    embed=discord.Embed(title="**Soward Stats**",color=0xFF1B1B, timestamp=ctx.message.created_at)
     embed.add_field(name=f"Basic Information", value=f"""```
 guilds: {len(self.client.guilds):,}
 users: {len(self.client.users):,}

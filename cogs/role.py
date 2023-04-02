@@ -45,7 +45,7 @@ class Role(commands.Cog):
     @commands.has_permissions(manage_roles=True)
     @commands.bot_has_permissions(manage_roles=True)
     @blacklist_check()
-    async def roles(self,ctx):
+    async def rolhjes(self,ctx):
         ''' Roles manager category '''
         if ctx.invoked_subcommand is None:
             helper = str(ctx.invoked_subcommand) if ctx.invoked_subcommand else str(ctx.command)
@@ -61,10 +61,10 @@ class Role(commands.Cog):
         '''<:icons_text1:986851468097253417>`Give a role to any member` '''
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
             await user.add_roles(role)
-            await ctx.send(f" <:tick_right:1003345911067443241>| Role {role.name} given to {user.name}")
+            await ctx.reply(embed=discord.Embed(title=f" <:tick_right:1003345911067443241>| Role {role.name} given to {user.name}", color=0xFF1B1B))
 
     @commands.command()
     @commands.bot_has_permissions(manage_roles=True)
@@ -74,13 +74,13 @@ class Role(commands.Cog):
         '''`Temporarily give a role to any member` '''
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
             seconds = convert(time)
             await user.add_roles(role,reason=None)
-            await ctx.send(f"<:tick_right:1003345911067443241> | {role.name} added to user {user.name}")
+            await ctx.reply(embed= discord.Embed(title=f"<:tick_right:1003345911067443241> | {role.name} added to user {user.name}", color=0xFF1B1B))
             await asyncio.sleep(seconds)
-            await user.remove_roles(role)
+            await user.remove_roles(role, reason=f"action done by {ctx.author}")
 
 
     @commands.command()
@@ -91,10 +91,10 @@ class Role(commands.Cog):
         ''' <:icons_text1:1004454337705152582>`Remove a role from any member` '''
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
-            await user.remove_roles(role)
-            await ctx.send(f"<:tick_right:1003345911067443241> | Role {role.name} removed from {user.name}")
+            await user.remove_roles(role, reason=f"action done by {ctx.author}")
+            await ctx.reply(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Role {role.name} removed from {user.name}", color=0xFF1B1B))
     
 
     @commands.command()
@@ -104,10 +104,10 @@ class Role(commands.Cog):
     async def deleterole(self,ctx,role:discord.Role):
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
-            await role.delete()
-            await ctx.send(f"<:tick_right:1003345911067443241> | Role {role} deleted")
+            await role.delete(reason=f"action done by {ctx.author}")
+            await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Role {role} deleted", color=0xFF1B1B))
 
 
     @commands.command()
@@ -117,10 +117,10 @@ class Role(commands.Cog):
     async def createrole(self,ctx,*,name):
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
-            await ctx.guild.create_role(name=name,color=discord.Color.default())
-            await ctx.send(f"<:tick_right:1003345911067443241> | Role {name} created successfully!")
+            await ctx.guild.create_role(name=name,reason=f"action done by {ctx.author}",color=discord.Color.default())
+            await ctx.reply(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Role {name} created successfully!", color=0xFF1B1B))
         
         # TODO - Make this command so that it can add color to the role
 
@@ -139,10 +139,10 @@ class Role(commands.Cog):
     async def rename(self,ctx,role:discord.Role,*,newname):
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
-            await role.edit(name=newname)
-            await ctx.send(f"<:tick_right:1003345911067443241> | Role {role.name} has been renamed to {newname}")
+            await role.edit(name=newname, reason=f"action done by {ctx.author}")
+            await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Role {role.name} has been renamed to {newname}", color=0xFF1B1B))
 
     @commands.command()
     @commands.has_permissions(manage_roles=True)
@@ -151,7 +151,7 @@ class Role(commands.Cog):
     async def color(self,ctx,role:discord.Role,color):
         ''' <:icons_text1:1004454337705152582>`Changes the color of any role` '''
         if role is None:
-            return await ctx.send(f" | No role named {role} found in this server.")
+            return await ctx.send(f"No role named {role} found in this server.")
         if not color.startswith("0x"):
             color = "0x"+color
         color = int(color,0)

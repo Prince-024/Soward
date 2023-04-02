@@ -1,6 +1,6 @@
 import json, sys, os
 from discord.ext import commands
-from core import Context
+#from core import Context
 import aiohttp
 
 def add_user_to_blacklist(user_id: int) -> None:

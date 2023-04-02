@@ -1,5 +1,5 @@
 import discord
-DEFAULT_COLOR = 0x2f3136
+DEFAULT_COLOR = 0xFF1B1B
 
 def clean_code(content):
     if content.startswith('```') and content.endswith('```'):

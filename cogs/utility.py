@@ -40,8 +40,8 @@ class utility(commands.Cog):
     async def snipe(self, ctx):
         message = self.sniped.get(ctx.channel.id)
         if message == None:
-            return await ctx.send(embed=discord.Embed(title="snipe", description="There are no reecently deleted messages", color=0x2f3136))
-        embed = discord.Embed(title="Message sent by %s" % (message.author), description=message.content, color=0x2f3136, timestamp=message.created_at)
+            return await ctx.send(embed=discord.Embed(title="snipe", description="There are no reecently deleted messages", color=0xFF1B1B))
+        embed = discord.Embed(title="Message sent by %s" % (message.author), description=message.content, color=0xFF1B1B, timestamp=message.created_at)
         await ctx.send(embed=embed)
 
 
@@ -57,7 +57,7 @@ class utility(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def members(self, ctx):
         if ctx.guild.id in self.dump_tasks:
-            return await ctx.send(embed=discord.Embed(title="Members | Dump", description="There is a dump task already running, please wait for it to finish", color=0x2f3136))
+            return await ctx.send(embed=discord.Embed(title="Members | Dump", description="There is a dump task already running, please wait for it to finish", color=0xFF1B1B))
         with open(f"{ctx.guild.id}_members_dump.txt", "a+", encoding="utf-8") as f:
             for member in ctx.guild.members:
                 f.write(f"{member} ({member.id})\n")
@@ -71,7 +71,7 @@ class utility(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def channels(self, ctx):
         if ctx.guild.id in self.dump_tasks:
-            return await ctx.send(embed=discord.Embed(title="Channels | Dump", description="There is a dump task already running, please wait for it to finish", color=0x2f3136))
+            return await ctx.send(embed=discord.Embed(title="Channels | Dump", description="There is a dump task already running, please wait for it to finish", color=0xFF1B1B))
         with open(f"{ctx.guild.id}_channels_dump.txt", "a+", encoding="utf-8") as f:
             for channel in ctx.guild.text_channels:
                 f.write(f"[text_channel] {channel} ({channel.id})\n")
@@ -87,7 +87,7 @@ class utility(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def roles(self, ctx):
         if ctx.guild.id in self.dump_tasks:
-            return await ctx.send(embed=discord.Embed(title="Roles | Dump", description="There is a dump task already running, please wait for it to finish", color=0x2f3136))
+            return await ctx.send(embed=discord.Embed(title="Roles | Dump", description="There is a dump task already running, please wait for it to finish", color=0xFF1B1B))
         with open(f"{ctx.guild.id}_roles_dump.txt", "a+", encoding="utf-8") as f:
             for role in ctx.guild.roles:
                 f.write(f"[role] {role} ({role.id})\n")
@@ -111,9 +111,9 @@ class utility(commands.Cog):
                     ctx.guild.me: discord.PermissionOverwrite(read_messages=True)
                 }            
                 jail = await ctx.guild.create_text_channel("jail", overwrites=overwrites)
-                await ctx.send(embed=discord.Embed(title="jail", description="Your server has no jail channel, I created one for you %s" % (jail.mention), color=0x2f3136))
+                await ctx.send(embed=discord.Embed(title="jail", description="Your server has no jail channel, I created one for you %s" % (jail.mention), color=0xFF1B1B))
             except discord.Forbidden:
-                return await ctx.send(embed=discord.Embed(title="jail", description="Please give me permissions, I am unable to create the jailed channel", color=0x2f3136))
+                return await ctx.send(embed=discord.Embed(title="jail", description="Please give me permissions, I am unable to create the jailed channel", color=0xFF1B1B))
 
         for channel in ctx.guild.channels:
             if channel.name == "jail":
@@ -131,9 +131,9 @@ class utility(commands.Cog):
         role = discord.utils.get(ctx.guild.roles, name="jailed")
         await member.add_roles(role)
 
-        await jail.send(content=member.mention, embed=discord.Embed(title="jail", description="Please live out your jail sentence until the court lets you free.", color=0x2f3136))
-        await ctx.send(embed=discord.Embed(title="jail", description=" <:tick_right:1003345911067443241> | Successfully jailed **`%s`**" % (member.name), color=0x2f3136))
-        await member.send(embed=discord.Embed(title="jail", description="You have been jailed in **`%s`** by **`%s`**" % (ctx.guild.name, ctx.author.name), color=0x2f3136))
+        await jail.send(content=member.mention, embed=discord.Embed(title="jail", description="Please live out your jail sentence until the court lets you free.", color=0xFF1B1B))
+        await ctx.send(embed=discord.Embed(title="jail", description=" <:tick_right:1003345911067443241> | Successfully jailed **`%s`**" % (member.name), color=0xFF1B1B))
+        await member.send(embed=discord.Embed(title="jail", description="You have been jailed in **`%s`** by **`%s`**" % (ctx.guild.name, ctx.author.name), color=0xFF1B1B))
 
     @commands.group(name="unjail", description="Unjails a user", usage="unjail <user>",  aliases=["free"])
     @blacklist_check()

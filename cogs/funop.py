@@ -196,7 +196,7 @@ class Funop(commands.Cog):
       embed = discord.Embed(
           title = 'Here is a joke',
           description = joke,
-          color = random.randint(0, 0xFFFFFF))
+          color = 0xFF1B1B)
       await ctx.channel.trigger_typing()
       await ctx.send(embed=embed)
 

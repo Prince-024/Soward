@@ -84,7 +84,7 @@ class voice(commands.Cog):
         c = conn.cursor()
         guildID = ctx.guild.id
         id = ctx.author.id
-        if ctx.author.id == ctx.guild.owner_id or ctx.author.id == 980361546918162482:
+        if ctx.author.id == ctx.guild.owner_id or ctx.author.id == 1018139793789563000:
             def check(m):
                 return m.author.id == ctx.author.id
             await ctx.channel.send("**You have 60 seconds to answer each question!**")

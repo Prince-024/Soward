@@ -38,7 +38,7 @@ class general(commands.Cog):
             embed=discord.Embed(title="emoji",
                                 description="emoji: %s\nid: **`%s`**" %
                                 (emoji, emoji.id),
-                                color=0x2f3136))
+                                color=0xFF1B1B))
 
     @commands.group(name="user",
                       description="Shows user syntax",
@@ -49,7 +49,7 @@ class general(commands.Cog):
             embed=discord.Embed(title="user",
                                 description="user: %s\nid: **`%s`**" %
                                 (user.mention, user.id),
-                                color=0x2f3136))
+                                color=0xFF1B1B))
 
     @commands.group(name="role",
                       description="Shows role syntax",
@@ -60,7 +60,7 @@ class general(commands.Cog):
             embed=discord.Embed(title="role",
                                 description="role: %s\nid: **`%s`**" %
                                 (role.mention, role.id),
-                                color=0x2f3136))
+                                color=0xFF1B1B))
 
     @commands.group(name="channel",
                       description="Shows channel syntax",
@@ -71,7 +71,7 @@ class general(commands.Cog):
             embed=discord.Embed(title="channel",
                                 description="channel: %s\nid: **`%s`**" %
                                 (channel.mention, channel.id),
-                                color=0x2f3136))
+                                color=0xFF1B1B))
 
     @commands.group(name="boosts",
                       description="Shows boosts count",
@@ -83,7 +83,7 @@ class general(commands.Cog):
             embed=discord.Embed(title="boosts",
                                 description="**`%s`**" %
                                 (ctx.guild.premium_subscription_count),
-                                color=0x2f3136))
+                                color=0xFF1B1B))
 
     @commands.group(name="emoji-add",
                       description="Adds a emoji",
@@ -110,22 +110,22 @@ class general(commands.Cog):
                         embed=discord.Embed(title="",
                                             description="added \"**`%s`**\"!" %
                                             (emote),
-                                            color=0x2f3136))
+                                            color=0xFF1B1B))
                 except Exception:
                     return await ctx.send(
                         embed=discord.Embed(title="",
                                             description=f"failed to add emoji",
-                                            color=0x2f3136))
+                                            color=0xFF1B1B))
             else:
                 return await ctx.send(
                     embed=discord.Embed(title="",
                                         description=f"invalid emoji",
-                                        color=0x2f3136))
+                                        color=0xFF1B1B))
         except Exception:
             return await ctx.send(
                 embed=discord.Embed(title="",
                                     description=f"failed to add emoji",
-                                    color=0x2f3136))
+                                    color=0xFF1B1B))
 
     @commands.group(name="emoji-delete",
                       description="Deletes a emoji",
@@ -137,7 +137,7 @@ class general(commands.Cog):
         return await ctx.send(
             embed=discord.Embed(title="emoji-delete",
                                 description="deleted \"**`%s`**\"!" % (emote),
-                                color=0x2f3136))
+                                color=0xFF1B1B))
 
 def setup(bot):
     bot.add_cog(general(bot))

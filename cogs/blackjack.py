@@ -224,7 +224,7 @@ class Bj(commands.Cog):
 
             # Show cards (but keep one dealer card hidden)
             embed = discord.Embed(
-                title="Round {}".format(self.round_number), colour=discord.Colour.blue()
+                title="Round {}".format(self.round_number), color=0xFF1B1B
             )
 
             dealer_cards = (

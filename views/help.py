@@ -81,8 +81,9 @@ class View(discord.ui.View):
 			if "help_custom" in dir(cog):
 				emoji, label, description = cog.help_custom()
 				options.append(discord.SelectOption(label=label, description=description, emoji=emoji))
-				embed = discord.Embed(title = f"{emoji} Help · {label}",description=f"`{cog.__doc__}`", url="https://discord.com/api/oauth2/authorize?client_id=1004248513435152484&permissions=8&scope=bot")
+				embed = discord.Embed(title = f"{emoji} Help · {label}",description=f"`{cog.__doc__}`", url="https://discord.com/api/oauth2/authorize?client_id=1004248513435152484&permissions=8&scope=bot", color=0xFF1B1B)
 				embed.set_footer(text="Made By Prince", icon_url=self.ctx.message.author.display_avatar.url)
+   #       embed.set_thumbnail(url=self.ctx.message.author.display_avatar.url)
 
 				for command in cog.get_commands():
 					params = ""

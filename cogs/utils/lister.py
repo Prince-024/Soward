@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from disputils import BotEmbedPaginator
 import math
-from cogs.utils.color import fetch_color
+from cogs.utilss.color import fetch_color
 
 async def lister(ctx,your_list,color,*,title):
     pages = math.ceil(len(your_list)/15)

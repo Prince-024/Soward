@@ -26,7 +26,7 @@ class Games(commands.Cog):
         help="Starts a Tic-Tac-Toe game",
         aliases=['ttt', 'tic'])
     async def tictactoe(self, ctx: CustomContext):
-        embed = discord.Embed(description=f"🔎 {ctx.author.name} is looking to play Tic-Tac-Toe!")
+        embed = discord.Embed(description=f"🔎 {ctx.author.name} is looking to play Tic-Tac-Toe!", color=0xFF1B1B)
 
         player1 = ctx.author
         view = LookingToPlay(timeout=120)
@@ -38,7 +38,7 @@ class Games(commands.Cog):
         if player2:
             starter = random.choice([player1, player2])
             ttt = TicTacToe(ctx, player1, player2, starter=starter)
-            ttt.message = await view.message.edit(content=f'#️⃣ {starter.name} goes first', view=ttt, embed=None)
+            ttt.message = await view.message.edit(content=f'#️⃣ {starter.mention} goes first', view=ttt, embed=None)
             await ttt.wait()
 
     

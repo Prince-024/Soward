@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import json
-
+from utilities.Tools import*
 class invtracker(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -16,9 +16,14 @@ class invtracker(commands.Cog):
 #')
 
     # now make a command where the server owner can change the channel for leveling.
-    @commands.group()
-    async def TicketTool(self, ctx: commands.Context):
-       """``` sendpanel ・ adduser ・ delete ・ close```"""
+    @commands.command()
+    @blacklist_check()
+    async def Ticket(self, ctx: commands.Context):
+            embed=discord.Embed(title="**Ticket**", description=""""``` sendpanel ・ adduser ・ ticdelete ・ close```""",color=0xFF1B1B, timestamp=ctx.message.created_at)
+            embed.set_author(name=ctx.author, icon_url=ctx.author.display_avatar)
+            embed.set_thumbnail(url=self.bot.user.avatar)
+            embed.set_footer(text="Made By Prince", icon_url=self.bot.user.avatar)
+            await ctx.reply(embed=embed)
   
 
 def setup(bot):

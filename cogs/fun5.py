@@ -183,11 +183,11 @@ class Fun5(commands.Cog):
           embed = discord.Embed(
             title = title,
             description = f"[**Post link**]({postlink})\n[**Author Profile**](https://www.reddit.com/u/{author})",
-            color = 0x2f3136,
+            color = 0xFF1B1B,
             timestamp = datetime.datetime.utcnow()
           )
           embed.set_image(url=url)
-          embed.set_author(name=f"r/{subreddit}", url = f"https://www.reddit.com/r/{subreddit}", icon_url = "https://external-preview.redd.it/iDdntscPf-nfWKqzHRGFmhVxZm4hZgaKe5oyFws-yzA.png?auto=webp&s=38648ef0dc2c3fce76d5e1d8639234d8da0152b2")
+          embed.set_author(name=f"r/{subreddit}", url = f"https://www.reddit.com/r/{subreddit}", icon_url = "https://images-ext-1.discordapp.net/external/XrJavR2bQK47KNCY3DnTog-f4QPNg2NQLI-_UV5zRCM/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1004248513435152484/901eaf50a9e389a7e00cab6c06a2bb59.png")
           bullet = " • "
           embed.set_footer(text=f"👍 {upvotes} {bullet} u/{author}")
           msg = await ctx.send(embed=embed)
@@ -214,7 +214,7 @@ class Fun5(commands.Cog):
     embed = discord.Embed(
       title = "Slots Game!",
       description = "`🚫` `🚫` `🚫`",
-      color = 0x13dd4e,
+      color = 0xFF1B1B,
       timestamp = datetime.datetime.utcnow()
     )
     delthis = await ctx.send(embed = spinning)
@@ -228,7 +228,7 @@ class Fun5(commands.Cog):
     embed = discord.Embed(
       title = "Slots Game!",
       description = f"`{emoji1}` `🚫` `🚫`",
-      color = 0x2f3136,
+      color = 0xFF1B1B,
       timestamp = datetime.datetime.utcnow()
     )
 
@@ -241,7 +241,7 @@ class Fun5(commands.Cog):
     embed = discord.Embed(
       title = "Slots Game!",
       description = f"`{emoji1}` `{emoji2}` `🚫`",
-      color = 0x2f3136,
+      color = 0xFF1B1B,
       timestamp = datetime.datetime.utcnow()
     )
 
@@ -267,7 +267,7 @@ class Fun5(commands.Cog):
       embed = discord.Embed(
         title = "🏆 Slots Game! 🏆",
         description = f"`{emoji1}` `{emoji2}` `{emoji3}`",
-        color = 0x13dd4e,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.add_field(name = "Winnings", value = f"You won the **JACKPOT** of ${won}! (You bet ${bet_amount})")
@@ -278,7 +278,7 @@ class Fun5(commands.Cog):
       embed = discord.Embed(
         title = "🏆 Slots Game! 🏆",
         description = f"{emoji1} {emoji2} {emoji3}",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.add_field(name = "Winnings!", value = f"You bet ${bet_amount} and won ${bet_amount * 3} (Net gain: ${bet_amount * 2})")
@@ -289,7 +289,7 @@ class Fun5(commands.Cog):
       embed = discord.Embed(
         title = "😞 Slots Game! 😞",
         description = f"`{emoji1}` `{emoji2}` `{emoji3}`",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       embed.add_field(name = "You lost!", value = "You didn't get any matching icons.")
@@ -307,7 +307,7 @@ class Fun5(commands.Cog):
       embed = discord.Embed(
         title = "Random Word",
         description = "Provided by https://random-word-api.herokuapp.com",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
 
@@ -358,7 +358,7 @@ class Fun5(commands.Cog):
       embed = discord.Embed(
         title = f"{num_of_lenniez} lenniez for you :^)",
         description = "why tf are you even wasting your time seriously",
-        color = 0x2f3136,
+        color = 0xFF1B1B,
         timestamp = datetime.datetime.utcnow()
       )
       for i in range(num_of_lenniez):
@@ -401,9 +401,9 @@ class Fun5(commands.Cog):
    #   )
    #   await ctx.send(embed=embed)
 
-  @commands.command(aliases=['owoify'])
+  @commands.command(aliases=['owoijhggfy'])
   @blacklist_check()
-  async def owo(self, ctx, *, text:str=None):
+  async def owhaho(self, ctx, *, text:str=None):
   
     """owoify some text OwO"""
     if text == None:
@@ -436,7 +436,7 @@ class Fun5(commands.Cog):
         embed = discord.Embed(
           title = "<:Icons_correct:1017402689027592222> successfully deleted!",
           description = channel.name,
-          color = 0x2f3136,
+          color = 0xFF1B1B,
           timestamp = datetime.datetime.utcnow()
         )
         await ctx.send(embed=embed)

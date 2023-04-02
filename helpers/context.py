@@ -210,7 +210,7 @@ class CustomContext(commands.Context):
                 embed.color = color
 
         if reminders:
-            answers = [f"{random.choice(star_emoji)} Help **Stealth Bot** grow by voting on top.gg: **<https://top.gg/bot/760179628122964008>**", f'{random.choice(star_emoji)} Feature not working like it\'s supposed to? Join our support server: **<https://discord.gg/MrBcA6PZPw>**', f'{random.choice(star_emoji)} Got a question? DM me and the developer will respond as fast as they can!']
+            answers = [f"{random.choice(star_emoji)} Help **Ethrex Bot** grow by voting on top.gg: **<>**", f'{random.choice(star_emoji)} Feature not working like it\'s supposed to? Join our support server: **<https://discord.gg/jkop>**', f'{random.choice(star_emoji)} Got a question? DM me and the developer will respond as fast as they can!']
             number = random.randint(1, 10)
 
             content = content

@@ -5,7 +5,7 @@ import requests
 import sys
 import setuptools
 from itertools import cycle
-from core import Soward
+#from core import Soward
 import threading
 import datetime
 import logging

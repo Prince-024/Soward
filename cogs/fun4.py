@@ -10,7 +10,7 @@ class Ranker(commands.Cog):
     embed = discord.Embed(
       title = f"{method} machine",
       description = f"You are {percent}% {method_2}",
-      color = 0x13dd4e,
+      color = 0xFF1B1B,
     )
     return embed
 

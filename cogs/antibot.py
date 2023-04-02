@@ -1,12 +1,12 @@
 import discord
 import os
 import datetime
-from core import Soward 
+#from core import Soward 
 from discord.ext import commands
 from utilities.Tools import *
 from discord.ext.commands import Cog
 class antibot(Cog):
-    def __init__(self, client: Soward):
+    def __init__(self, client):
       self.client = client
       print("Cog Loaded: AntiBot")
 

@@ -34,7 +34,7 @@ class owner(commands.Cog):
         users = len(set(self.bot.get_all_members()))
         channels = len(set(self.bot.get_all_channels()))
         owner = self.bot.get_user(self.bot.owner_ids[0])
-        em = discord.Embed(title=' Eval', description=f' discord.py `{discord.__version__}`\n python version {sys.version}\n **{guilds}** guilds\n **{users}** users\n **{channels}** channels', color=DEFAULT_COLOR)
+        em = discord.Embed(title=' Eval', description=f' discord.py `{discord.__version__}`\n python version {sys.version}\n **{guilds}** guilds\n **{users}** users\n **{channels}** channels', color=0xFF1B1B)
         em.set_footer(text=f'{owner}', icon_url=owner.avatar)
         await ctx.send(embed=em)
         
@@ -138,7 +138,7 @@ class owner(commands.Cog):
         view.add_item(b2)
         view.add_item(b3)
  
-        embed = discord.Embed(colour=0x2f3136)
+        embed = discord.Embed(colour=0xFF1B1B)
  
          #start_time = calendar.timegm(time.strptime(start_time.strftime("%Y-%m-%d %H:%M:%S+00:00"), '%Y-%m-%d %H:%M:%S+00:00'))
  
@@ -156,7 +156,7 @@ class owner(commands.Cog):
             a = f'{prince.mention}'
         else:
             a = f'{prince}'
-        embed.add_field(name=' Bot Developers:', value=f"<@1018139793789563000>, <@925246550018519040>, <@940973004647718912>")
+        embed.add_field(name=' Bot Developers:', value=f"<@1018139793789563000>, <@940973004647718912>")
         embed.add_field(name='special thanks', value=f"```   ~ PЯΛΠΛѴ  .ゞ..ꨄ🥀  , VŁG丶Thory```")
 
         embed.set_author(name=f"{self.bot.user.name} Stats", icon_url=self.bot.user.display_avatar.url)

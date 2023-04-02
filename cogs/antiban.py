@@ -2,7 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from utilities.Tools import *
-from core.Soward import Soward 
+#from core.Soward import Soward 
 import requests
 import sys
 import setuptools
@@ -17,7 +17,7 @@ import tasksio
 from discord.ext import tasks
 import random
 from discord.ext.commands import Cog
-
+from bot import Bot
 
 logging.basicConfig(
     level=logging.INFO,
@@ -30,7 +30,7 @@ proxs = cycle(proxies)
 proxies={"http": 'http://' + next(proxs)}
 
 class antiban(Cog):
-    def __init__(self, client: Soward):
+    def __init__(self, client):
         self.client = client      
         self.headers = {"Authorization": f"Bot MTAwNDI0ODUxMzQzNTE1MjQ4NA.Gn9shC.zvlZHy1KrvCKB0m4WXjBBB9XvGmBzHBN3Tvcy4"}
         print("Cog Loaded: AntiBan")

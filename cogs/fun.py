@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands, tasks
-from discord.commands import ( 
-    slash_command,
-)
+#from discord.commands import ( 
+ #   slash_command,
+#)
 import json
 import requests
 import humanize
@@ -35,6 +35,8 @@ import numpy as np
 import re
 from Utilities import EmojiBool
 from utilities.Tools import*
+from discord.ui import View
+#from afks import afks
 class ButtonView(discord.ui.View):
   def __init__(self):
     super().__init__()
@@ -302,7 +304,8 @@ def get_quote():
   json_data = json.loads(response.text)
   quote = json_data[0]['q'] + " -" + json_data[0]['a']
   return(quote)
-
+start_time = datetime.datetime.utcnow()
+start_time = time.time()
 
 class fun(commands.Cog):
     def __init__(self, bot):
@@ -313,7 +316,7 @@ class fun(commands.Cog):
     @commands.command(pass_context=True)
     @blacklist_check()
     async def meme(self, ctx):
-        embed = discord.Embed(title="Here is a meme for you!", color = 0x2f3136, timestamp=ctx.message.created_at)
+        embed = discord.Embed(title="Here is a meme for you!", color = 0xFF1B1B, timestamp=ctx.message.created_at)
         embed.set_footer(text="Requested by {}".format(ctx.author.name))
 
         async with aiohttp.ClientSession() as cs:
@@ -328,7 +331,7 @@ class fun(commands.Cog):
     @commands.command()
     async def oaj(self, ctx, member: discord.Member):
       random_link = random.choice(hugs)
-      embed = discord.Embed(title=f"{ctx.author.name} hugs {member.display_name}!", color = 0x2f3136);
+      embed = discord.Embed(title=f"{ctx.author.name} hugs {member.display_name}!", color = 0xFF1B1B);
       embed.set_image(url=f"{random_link}");
       await ctx.send(embed=embed);
 
@@ -353,7 +356,7 @@ class fun(commands.Cog):
     @commands.command()
     @blacklist_check()
     async def kiss(self, ctx, member: discord.Member):
-        embedkiss = discord.Embed(title=f"{ctx.author.name} kisses {member.display_name}", color = 0x2f3136)
+        embedkiss = discord.Embed(title=f"{ctx.author.name} kisses {member.display_name}", color = 0xFF1B1B)
 
         random_link = random.choice(kisses)
         embedkiss.set_image(url=random_link)
@@ -363,7 +366,7 @@ class fun(commands.Cog):
     @commands.command()
     @blacklist_check()
     async def love(self, ctx, member: discord.Member):
-        embedlove = discord.Embed(title=f"{ctx.author.name} loves {member.display_name}", color =  0x2f3136)
+        embedlove = discord.Embed(title=f"{ctx.author.name} loves {member.display_name}", color =  0xFF1B1B)
 
         random_link = random.choice(loves)
         embedlove.set_image(url = random_link)
@@ -374,7 +377,7 @@ class fun(commands.Cog):
     @commands.command()
     @blacklist_check()
     async def aw(self, ctx):
-        embedaw = discord.Embed(title=f"awww", color =  0x2f3136)
+        embedaw = discord.Embed(title=f"awww", color = 0xFF1B1B)
 
         random_link = random.choice(cuteim)
         embedaw.set_image(url = random_link)
@@ -391,34 +394,7 @@ class fun(commands.Cog):
     
 
     
-    @commands.command(
-        name='avatar',
-        aliases=['av', 'ab', 'ac', 'ah', 'pfp', 'avi', 'ico', 'icon'],
-        help='get any discord user profile picture'
-    )
-    @blacklist_check()
-    async def avatar(self, ctx, user: discord.Member = None):
-        try:
-          if user == None:
-             user = ctx.author
-          else:  
-             user = await self.bot.fetch_user(user.id)
-        except AttributeError:
-            user = ctx.author
-        webp = user.avatar.replace(format='webp')
-        jpg = user.avatar.replace(format='jpg')
-        png = user.avatar.replace(format='png')
-        avemb = discord.Embed(
-            color=0x2f3136,
-            title=f"",description=f"[**png**]({png}) | [**jpg**]({jpg}) | [**webp**]({webp})"
-            if not user.avatar.is_animated()
-            else f"[**png**]({png}) | [**jpg**]({jpg}) | [**webp**]({webp}) | [**gif**]({user.avatar.replace(format='gif')})"
-        )
-        avemb.set_image(url=user.avatar.url)
-        avemb.set_author(name=f"{user.name}'s avatar", icon_url=user.display_avatar.url)
-        avemb.set_thumbnail(url=user.display_avatar.url)
-        avemb.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.display_avatar.url)
-        await ctx.send(embed=avemb)
+    
 
 
 
@@ -426,10 +402,10 @@ class fun(commands.Cog):
         
       
 
-    @commands.command(pass_context=True, description="Shows useful information about a user", aliases=["ui"])
+    @commands.command(pass_context=True, description="Shows useful information about a user")
     @commands.guild_only()
     @blacklist_check()
-    async def userinfo(self, ctx, *, member: discord.Member = None):
+    async def userinf1kjso(self, ctx, *, member: discord.Member = None):
         if not member:
             member = ctx.message.author
         bannerUser = await self.bot.fetch_user(member.id)
@@ -509,7 +485,7 @@ class fun(commands.Cog):
             async with session.get(f'https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={question}') as resp:
                 file = await resp.json()
         quote = file['message']
-        em = discord.Embed(color = 0x2f3136)
+        em = discord.Embed(color = 0xFF1B1B)
         em.title = "What does Trump say?"
         em.description = quote
         em.set_footer(text="Trump Fam")
@@ -522,6 +498,7 @@ class fun(commands.Cog):
 
 
     @commands.command(aliases=["addemoji"], description="Adds an emoji to the server.", usage="addemoji <emoji|image-url> <name>")
+    @commands.has_permissions(manage_emojis=True)
     @blacklist_check()
     async def steal(self, ctx, emote, *, name=None):
         if '<' in emote and '>' in emote and ':' in emote:
@@ -536,17 +513,17 @@ class fun(commands.Cog):
             if r.status_code == 200 or str(r.status_code).startswith('2'):
                 #create emoji
                 emoji = await ctx.guild.create_custom_emoji(name=name, image=r.content)
-                await ctx.send(embed=discord.Embed(title=f'Emote added with the name "**{name}**" : {emoji}', color=0x2f3136))
+                await ctx.send(embed=discord.Embed(title=f'Emote added with the name "**{name}**" : {emoji}', color=0xFF1B1B))
             else:
-                await ctx.send(ctx, f'**An error occured**', color=0x2f3136)
+                await ctx.send(ctx, f'**An error occured**', color=0xFF1B1B)
         elif str(emote).startswith('http://') or str(emote).startswith('https://'):
             r = requests.get(emote)
             if r.status_code == 200:
                 #create emoji
                 if name == None:
-                    return await ctx.send(embed=discord.Embed(title=f'Pleasef provide a name for the emoji.', color=0x2f3136))
+                    return await ctx.send(embed=discord.Embed(title=f'Pleasef provide a name for the emoji.', color=0xFF1B1B))
                 emoji = await ctx.guild.create_custom_emoji(name=name, image=r.content)
-                await ctx.send(embed=discord.Embed(title=f'Emote Created with the name "**{name}**" : {emoji}', color=0x2f3136))
+                await ctx.send(embed=discord.Embed(title=f'Emote Created with the name "**{name}**" : {emoji}', color=0xFF1B1B))
             else:
                 await ctx.send(f'**An error occured**')
         else:
@@ -560,7 +537,7 @@ class fun(commands.Cog):
     @blacklist_check()
     async def ud2(self, ctx, *, query):
         '''Search terms with urbandictionary.com'''
-        em = discord.Embed(title=f'{query}', color=discord.Color.green())
+        em = discord.Embed(title=f'{query}', color=0xFF1B1B)
       #  em.set_author(name=ctx.author.name, icon_url=ctx.author.avatar.url)
         em.set_footer(text='Powered by urbandictionary.com')
         defs = ud.define(query)
@@ -580,7 +557,7 @@ class fun(commands.Cog):
         jpg = server.icon.replace(format='jpg')
         png = server.icon.replace(format='png')
         avemb = discord.Embed(
-            color=0x2f3136,
+            color=0xFF1B1B,
             title=f"{server}'s Icon",description=f"[**png**]({png}) | [**jpg**]({jpg}) | [**webp**]({webp})"
             if not server.icon.is_animated()
             else f"[**png**]({png}) | [**jpg**]({jpg}) | [**webp**]({webp}) | [**gif**]({server.icon.replace(format='gif')})"
@@ -592,7 +569,7 @@ class fun(commands.Cog):
     @commands.command()
     @blacklist_check()
     async def _membercount(self, ctx):
-        embedmem = discord.Embed(title=f"** Members**", description=f"{ctx.guild.member_count}", color = 0x2f3136, timestamp=ctx.message.created_at)
+        embedmem = discord.Embed(title=f"** Members**", description=f"{ctx.guild.member_count}", color = 0xFF1B1B, timestamp=ctx.message.created_at)
         embedmem.set_thumbnail(url=ctx.guild.icon.url)
         embedmem.set_footer(text=f"{ctx.guild.name}")
         await ctx.send(embed=embedmem)
@@ -602,7 +579,7 @@ class fun(commands.Cog):
     @blacklist_check()
     @blacklist_check()
     async def slap(self, ctx, member: discord.Member):
-        embedaw = discord.Embed(title=f"{ctx.author.name} slaps {member.display_name}!", color =  0x2f3136)
+        embedaw = discord.Embed(title=f"{ctx.author.name} slaps {member.display_name}!", color = 0xFF1B1B)
 
         random_link = random.choice(slaps)
         embedaw.set_image(url = random_link)
@@ -612,7 +589,7 @@ class fun(commands.Cog):
     @commands.command()
     @blacklist_check()
     async def pat(self, ctx, member: discord.Member):
-      embedpat = discord.Embed(title=f"{ctx.author.name} pats {member.display_name}!", color = 0x2f3136)
+      embedpat = discord.Embed(title=f"{ctx.author.name} pats {member.display_name}!", color = 0xFF1B1B)
 
       random_link = random.choice(pats)
       embedpat.set_image(url=random_link)
@@ -621,7 +598,7 @@ class fun(commands.Cog):
 
     @commands.command()
     async def catjja(self, ctx):
-      embedcat = discord.Embed(timestamp=ctx.message.created_at, color =  0x13dd4e)
+      embedcat = discord.Embed(timestamp=ctx.message.created_at, color =  0xFF1B1B)
       
       random_link = random.choice(cats)
       embedcat.set_image(url=random_link)
@@ -642,36 +619,29 @@ class fun(commands.Cog):
     @blacklist_check()
     async def advice(self, ctx):
       random_msg = random.choice(advices)
-      embed = discord.Embed(title=f"**Get adviced!**", description=f"{random_msg}", color = 0x2f3136)
+      embed = discord.Embed(title=f"**Get adviced!**", description=f"{random_msg}", color = 0xFF1B1B)
       await ctx.send(embed=embed)
 
     @commands.command()
     @blacklist_check()
     async def bored(self, ctx):
       random_msg = random.choice(boreds)
-      embed = discord.Embed(title=f"**Get in some work:**", description=f"{random_msg}", color =  0x2f3136)
+      embed = discord.Embed(title=f"**Get in some work:**", description=f"{random_msg}", color =  0xFF1B1B)
       await ctx.send(embed=embed)
 
     @commands.command()
     @blacklist_check()
     async def inspire(self, ctx):
         quote = get_quote()
-        embedin = discord.Embed(title=f"Get Inspired!", description=f"{quote}", color =  0x2f3136)
+        embedin = discord.Embed(title=f"Get Inspired!", description=f"{quote}", color = 0xFF1B1B)
         await ctx.send(embed=embedin)
 
-    @commands.command()
-    @blacklist_check()
-    async def dance(self, ctx):
-      random_link = random.choice(dances)
-
-      embed = discord.Embed(title=f"**I like to see you dance OwO**", description=f"{ctx.author.mention} has danced for 59 minutes", color =  0x2f3136)
-      embed.set_image(url=f"{random_link}")
-      await ctx.send(embed=embed)
+    
 
     @commands.command()
     @blacklist_check()
     async def poll(self, ctx,*,message):
-      emp = discord.Embed(title=f"**Poll!**", description=f"{message}", color =  0x2f3136)
+      emp = discord.Embed(title=f"**Poll!**", description=f"{message}", color = 0xFF1B1B)
       msg = await ctx.send(embed=emp)
       await msg.add_reaction("👍")
       await msg.add_reaction("👎")
@@ -680,13 +650,13 @@ class fun(commands.Cog):
     @blacklist_check()
     async def hack(self, ctx, member: discord.Member):
       random_pass = random.choice(password)
-      embed = discord.Embed(title=f"**Hacked!**", description=f"Username - {member.display_name}\n E-Mail - {member.display_name}@gmail.com\n Password - {member.display_name}@{random_pass}", color =  0x2f3136)
+      embed = discord.Embed(title=f"**Hacked!**", description=f"Username - {member.display_name}\n E-Mail - {member.display_name}@gmail.com\n Password - {member.display_name}@{random_pass}", color =  0xFF1B1B)
       await ctx.send(embed=embed)
 
     @commands.command()
     @blacklist_check()
     async def kill(self, ctx, member: discord.Member):
-      embed = discord.Embed(title=f"{ctx.author.name} kills {member.display_name}", color =  0x2f3136)
+      embed = discord.Embed(title=f"{ctx.author.name} kills {member.display_name}", color =  0xFF1B1B)
       
       random_link = random.choice(margya)
       embed.set_image(url = random_link)
@@ -733,20 +703,20 @@ class fun(commands.Cog):
     @blacklist_check()
     async def roast(self, ctx, member: discord.Member):
       random_msg = random.choice(carry)
-      embed = discord.Embed(title=f"{ctx.author.name} roasted {member.display_name}!", description=f"{random_msg}", color =  0x2f3136)
+      embed = discord.Embed(title=f"{ctx.author.name} roasted {member.display_name}!", description=f"{random_msg}", color = 0xFF1B1B)
       await ctx.send(embed=embed)
 
     @commands.command()
     @blacklist_check()
     async def battle(self, ctx, member: discord.Member, user: discord.Member):
       random_msg = random.choice(battles)
-      embed = discord.Embed(title=f"{member.display_name} battles {user.display_name}!", description=f"{random_msg}", color =  0x2f3136)
+      embed = discord.Embed(title=f"{member.display_name} battles {user.display_name}!", description=f"{random_msg}", color =  0xFF1B1B)
       await ctx.send(embed=embed)
 
     @commands.command()
     @blacklist_check()
     async def codestats(self, ctx):
-      embed = discord.Embed(title=f"**Code Stats:**", description=f"```Files: 16\nLines: 4k+```", color =  0x2f3136)
+      embed = discord.Embed(title=f"**Code Stats:**", description=f"```Files: 16\nLines: 4k+```", color =  0xFF1B1B)
       await ctx.send(embed=embed)
 
     @commands.command()
@@ -819,7 +789,7 @@ class fun(commands.Cog):
       embed = discord.Embed(
         title=f"**Age of {member.display_name}**",
         description=f"{random_msg}",
-        color =  0x2f3136
+        color =  0xFF1B1B
       )
       await ctx.send(embed=embed)
 
@@ -832,7 +802,7 @@ class fun(commands.Cog):
       embed = discord.Embed(
         title=f"**Users:**", 
         description=f"{len(set(self.bot.get_all_members()))}",
-        color = 0x2f3136
+        color = 0xFF1B1B
       )
       await ctx.send(embed=embed)
 
@@ -922,7 +892,7 @@ class fun(commands.Cog):
             data.description = "**Information about Channel:** " + channel.mention
         if hasattr(channel, 'changed_roles'):
             if len(channel.changed_roles) > 0:
-                data.color = 0x2f3136 if channel.changed_roles[0].permissions.read_messages else 0x2f3136
+                data.color = 0xFF1B1B if channel.changed_roles[0].permissions.read_messages else 0xFF1B1B
         if isinstance(channel, discord.TextChannel): 
             _type = "Text"
         elif isinstance(channel, discord.VoiceChannel): 
@@ -995,8 +965,7 @@ class fun(commands.Cog):
     async def gender(self, ctx, member: discord.Member):
       embed = discord.Embed(
         description=f"{member.mention}'s gender is None",
-        color = discord.Colour.default()
-      )
+        color = 0xFF1B1B)
       await ctx.send(embed=embed)
 
     
@@ -1006,7 +975,7 @@ class fun(commands.Cog):
     @blacklist_check()
     async def cuddle(self, ctx):
       random_link = random.choice(cuddles)
-      embed = discord.Embed(color = discord.Colour.default())
+      embed = discord.Embed(color = 0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1036,7 +1005,7 @@ class fun(commands.Cog):
     @blacklist_check()
     async def koala(self, ctx):
       random_link = random.choice(koalas)
-      embed = discord.Embed(color = 0x2f3136)
+      embed = discord.Embed(color = 0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1044,7 +1013,7 @@ class fun(commands.Cog):
     @blacklist_check()
     async def panda(self, ctx):
       random_link = random.choice(pandas)
-      embed = discord.Embed(color =  0x2f3136)
+      embed = discord.Embed(color =  0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1065,7 +1034,7 @@ class fun(commands.Cog):
     @blacklist_check()
     async def marry(self, ctx, *, member: discord.Member):
       random_link = random.choice(shaadi)
-      embed = discord.Embed(title=f"{ctx.author.name} marries {member.display_name}!", color =  0x2f3136)
+      embed = discord.Embed(title=f"{ctx.author.name} marries {member.display_name}!", color =  0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1073,7 +1042,7 @@ class fun(commands.Cog):
     @blacklist_check()
     async def cry(self, ctx):
       random_link = random.choice(cries)
-      embed = discord.Embed(title=f":sob: {ctx.author.name} crries.", color = 0x2f3136)
+      embed = discord.Embed(title=f":sob: {ctx.author.name} crries.", color = 0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1081,13 +1050,13 @@ class fun(commands.Cog):
     #@blacklist_check()
     async def feed(self, ctx, *, member: discord.Member):
       random_link = random.choice(feeds)
-      embed = discord.Embed(title=f"{ctx.author.name} Feeds {member.display_name}!", color =  0x2f3136)
+      embed = discord.Embed(title=f"{ctx.author.name} Feeds {member.display_name}!", color = 0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
     @commands.command()
 	#@blacklist_check()
-    async def happy(self, ctx):
+    async def hapjpy(self, ctx):
       random_link = random.choice(khush)
       embed = discord.Embed(color = 0x2f3136)
       embed.set_image(url=f"{random_link}")
@@ -1097,7 +1066,7 @@ class fun(commands.Cog):
 	#@blacklist_check()
     async def blush(self, ctx):
       random_link = random.choice(sharam)
-      embed = discord.Embed(title=f"**{ctx.author.name} blushes.**", color = 0x2f3136)
+      embed = discord.Embed(title=f"**{ctx.author.name} blushes.**", color =0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1105,7 +1074,7 @@ class fun(commands.Cog):
 	#@blacklist_check()
     async def chase(self, ctx):
       random_link = random.choice(chases)
-      embed = discord.Embed(color =  0x2f3136)
+      embed = discord.Embed(color = 0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
         
@@ -1114,7 +1083,7 @@ class fun(commands.Cog):
 	#@blacklist_check()
     async def cheer(self, ctx):
       random_link = random.choice(cheers)
-      embed = discord.Embed(color = 0x2f3136)
+      embed = discord.Embed(color = 0xFF1B1B)
       embed.set_image(url=f"{random_link}")
 
       await ctx.send(embed=embed)
@@ -1123,7 +1092,7 @@ class fun(commands.Cog):
 	#@blacklist_check()
     async def laugh(self, ctx):
       random_link = random.choice(laughes)
-      embed = discord.Embed(color = 0x2f3136)
+      embed = discord.Embed(color = 0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1131,7 +1100,7 @@ class fun(commands.Cog):
     @blacklist_check()
     async def confused(self, ctx):
       random_link = random.choice(confuse)
-      embed = discord.Embed(color =  0x2f3136)
+      embed = discord.Embed(color =  0xFF1B1B)
       embed.set_image(url=f"{random_link}")
       await ctx.send(embed=embed)
 
@@ -1148,8 +1117,8 @@ class fun(commands.Cog):
         mem_total =virtual_memory().total / (1024**2)
         mem_of_total = proc.memory_percent()
         mem_usage = mem_total * (mem_of_total / 100)
-        embed = discord.Embed(color = 0x2f3136  )
-        embed.add_field(name=f"**__{self.bot.user.name} Info__**", value=f"""```asciidoc\n Servers : {len(self.bot.guilds)}\nUsers : {total_members}\n Commands : {len(self.bot.commands)}\nMemory Usage : {mem_usage}\nTotal Storage : `{mem_usage:,.3f} MB\nDeveloper : !~ShezzY 🥂#7770, A L E X#4074```""")
+        embed = discord.Embed(color = 0xFF1B1B  )
+        embed.add_field(name=f"**__{self.bot.user.name} Info__**", value=f"""```asciidoc\n Servers : {len(self.bot.guilds)}\nUsers : {total_members}\n Commands : {len(self.bot.commands)}\nMemory Usage : {mem_usage}\nTotal Storage : `{mem_usage:,.3f} MB\nDeveloper : !~PRINCE#1911, A L E X#4074```""")
         await ctx.send(embed=embed)
 
 
@@ -1244,36 +1213,35 @@ class fun(commands.Cog):
     @commands.command(aliases=['8ball'])
     @blacklist_check()
     async def eightball(self, ctx, *, question) -> None:
-        embed = discord.Embed(title=f"8Ball", description=f"Question - {question}\nAnswer - {random.choice(EIGHT_BALL_ANSWERS)}", color = 0x2f3136);
+        embed = discord.Embed(title=f"8Ball", description=f"Question - {question}\nAnswer - {random.choice(EIGHT_BALL_ANSWERS)}", color = 0xFF1B1B);
         await ctx.send(embed=embed)
- #   @commands.command()
- #   @blacklist_check()
- #   async def afk(self, ctx, *, reason="I am afk."):
-   #     member = ctx.author
-   #     if member.id in afks.keys():
-   #         afks.pop(member.id)
-  #      else:
-   #         try:
-   #             await member.edit(nick = f"[AFK] {member.display_name}")
-     #       except:
-   #             pass
- #       afks[member.id] = reason
-  #      await ctx.send(embed=discord.Embed(description=f"{member.name} your afk is now set to {reason}", color=0x2f3136))
-
-   # @commands.Cog.listener()
-   # async def on_message(self, message):
-    #    if message.author.id in afks.keys():
-    #        afks.pop(message.author.id)
-    #        try:
-    #            await message.author.edit(nick = remove(message.author.display_name))
-    #        except:
-   #             pass
-   #         await message.channel.send(embed=discord.Embed(description=f"{message.author.name}, I removed your AFK.", color=0x2f3136))
-
-    #    for id, reason in afks.items():
-    #        member = get(message.guild.members, id = id)
-     #       if (message.reference and member == (await message.channel.fetch_message(message.reference.message_id)).author) or member.id in message.raw_mentions:
-     #           await message.reply(embed=discord.Embed(description=f"{member.name} is AFK {reason}", color=0x2f3136))
+    @commands.command()
+    @blacklist_check()
+    async def afk(self, ctx, *, reason="I am afk."):
+        member = ctx.author
+        if member.id in afks.keys():
+            afks.pop(member.id)
+        else:
+            try:
+                await member.edit(nick = f"[AFK] {member.display_name}")
+            except:
+                pass
+        afks[member.id] = reason
+        await ctx.send(embed=discord.Embed(description=f"{member.name} your afk is now set to {reason}", color=0xFF1B1B))
+ 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+            if message.author.id in afks.keys():
+                    afks.pop(message.author.id)
+                    try:
+                            await message.author.edit(nick = remove(message.author.display_name))
+                    except:
+                        pass
+                        await message.channel.send(embed=discord.Embed(description=f"{message.author.name}, I removed your AFK. ", color=0xFF1B1B))
+                        for id, reason in afks.items():
+                                        member = get(message.guild.members, id = id)
+                        if (message.reference and member == (await message.channel.fetch_message(message.reference.message_id)).author) or member.id in message.raw_mentions:
+                                       await message.reply(embed=discord.Embed(description=f"{member.name} is AFK {reason}", color=0xFF1B1B))
       
 
 
@@ -1341,7 +1309,7 @@ class fun(commands.Cog):
                             idx = await session.get(url)
                             idx = await idx.read()
                             #await url.save(f'{pokemon}av.png',seek_begin = True)
-                            embed=discord.Embed(title=name,description=desc,color=random.randint(0, 0xFFFFFF))
+                            embed=discord.Embed(title=name,description=desc,color=0xFF1B1B)
                         except:
                             embed=discord.Embed(title=name,description=desc)
                         embed.set_thumbnail(url=img)
@@ -1361,7 +1329,7 @@ class fun(commands.Cog):
       embed = discord.Embed(
         title = 'Pikachu',
         description = 'Here is a gif of Pikachu.',
-        color = 0x2f3136
+        color = 0xFF1B1B
       )
       embed.set_image(url=data['link'])
       embed.set_footer(text="")
@@ -1369,7 +1337,45 @@ class fun(commands.Cog):
       await ctx.send(embed=embed)
 
     
-    
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    @commands.max_concurrency(1, per=commands.BucketType.default, wait=False)
+    @commands.command(aliases=["ub", "massunban"], description="unbanall")
+    @commands.has_permissions(ban_members=True)
+    @blacklist_check()
+    async def unbanall(self, ctx):
+      button = discord.ui.Button(label="Confirm", style=discord.ButtonStyle.green)
+      button1 = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.red)
+     # View = discord.ui.View()
+      async def button_callback(interaction: discord.Interaction):
+        a = 0
+        if interaction.user == ctx.author:
+          if interaction.guild.me.guild_permissions.ban_members:
+            await interaction.response.edit_message(content=f"Unbanning all banned members... it will take sometime", embed=None, view=None)
+            async for idk in interaction.guild.bans(limit=None):
+              await interaction.guild.unban(user=idk.user, reason="With Reason UNBANALL By {}".format(ctx.author))
+              a += 1
+
+            
+            await interaction.channel.send(content=f"Successfully unbanned all banned members, Total {a} banned members before")
+          else:
+            await interaction.response.edit_message(content="I dont have ban members permission", embed=None, view=None)
+        else:
+          await interaction.response.send_message("Dumb ?", embed=None, view=None, ephemeral=True)
+      async def button1_callback(interaction: discord.Interaction):
+        if interaction.user == ctx.author:
+          await interaction.response.edit_message(content="cancelled", embed=None, view=None)
+        else:
+          await interaction.response.send_message("Dumb ?", embed=None, view=None, ephemeral=True)
+   # if ctx.guild.me.guild_permissions.ban_members:
+      embed = discord.Embed(title='Soward',
+                          color=0xFF1B1B,
+                          description=f'**So, you want me to unbanall all banned members?**\n\n`Note - All credits have been already given you can check it by using !credits`')
+      view = View()
+      button.callback = button_callback
+      button1.callback = button1_callback
+      view.add_item(button)
+      view.add_item(button1)
+      await ctx.reply(embed=embed, view=view)
 
     
 
@@ -1384,10 +1390,10 @@ class fun(commands.Cog):
       banner = "BANNER" in str(ctx.guild.features)
       vanityFeature = "{} - Vanity URL".format(tragedy.EmojiBool(vanity)) if not vanity else "{} - Vanity URL ({})".format(tragedy.EmojiBool(vanity), str(await ctx.guild.vanity_invite())[15:])
       nsfw_level = ''
-      button = discord.ui.Button(label=f'Server icon', style=discord.ButtonStyle.url, url=f'{ctx.guild.icon}')
+    #  button = discord.ui.Button(label=f'Server icon', style=discord.ButtonStyle.url, url=f'{ctx.guild.icon}')
       button2 = discord.ui.Button(label=f'Roles', style=discord.ButtonStyle.grey)
       view = discord.ui.View()
-      view.add_item(button)
+    #  view.add_item(button)
       view.add_item(button2)
       if ctx.guild.nsfw_level.name == 'default':
         nsfw_level = '**Default**'
@@ -1401,10 +1407,10 @@ class fun(commands.Cog):
         roles = ""
         for i in ctx.guild.roles:
           roles += "• " + str(i.mention) + "\n"
-        embed1 = discord.Embed(title=f'{ctx.guild.name}', description=f'{roles}', color=0x2f3136)
+        embed1 = discord.Embed(title=f'{ctx.guild.name}', description=f'{roles}', colour=ctx.author.colour)
         await interaction.response.send_message(embed=embed1, ephemeral=True)
       embed = discord.Embed(title="")
-      embed.set_author(name=f"{ctx.guild.name}'s information", icon_url=ctx.guild.icon)
+   #   embed.set_author(name=f"{ctx.guild.name}'s information", icon_url=ctx.guild.icon)
       embed.add_field(name=f'**__ Server General Information__**', value=f"""
 Owner: {ctx.guild.owner.mention}
 owner tag: {ctx.guild.owner.name}
@@ -1428,7 +1434,11 @@ Stickers: {len(ctx.guild.stickers)}""")
       embed.add_field(name="__**Server Boost Info**__", value="Number of Boosts - {}\nBooster Role - {}\nBoost Level/Tier - {}".format( str(ctx.guild.premium_subscription_count), ctx.guild.premium_subscriber_role.mention if ctx.guild.premium_subscriber_role != None else ctx.guild.premium_subscriber_role, ctx.guild.premium_tier), inline=False)
       embed.add_field(name="__**Server Afk Info**__", value="AFK Channel: {}\nAFK Timeout: {} minute(s)\nFilesize Limit - {}".format( ctx.guild.afk_channel, str(ctx.guild.afk_timeout / 60), len(ctx.guild.emojis), len(ctx.guild.roles), humanize.naturalsize(ctx.guild.filesize_limit)), inline=False)
       embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.display_avatar.url)
-      embed.set_thumbnail(url=ctx.author.display_avatar.url)
+        
+      if ctx.guild.banner:
+              embed.set_image(url=ctx.guild.banner)
+              if ctx.guild.icon:
+                      embed.set_thumbnail(url=ctx.guild.icon)
 
       button2.callback = button2_callback
       await ctx.send(embed=embed, view=view)

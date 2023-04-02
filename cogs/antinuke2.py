@@ -16,10 +16,14 @@ class antinuke(commands.Cog):
 #')
 
     # now make a command where the server owner can change the channel for leveling.
-    @commands.group()
+    @commands.command()
     @blacklist_check()
-    async def antnuke(self, ctx: commands.Context):
-       """``` Antinuke enable/disable ・ Antinuke config ・ features ・ whitelist add・ whitelist remove・ whitelist show ・ whitelist reset ・ channelclean ・ roleclean ・ recover ・ punishment set ・ punishment show  ```"""
+    async def antihe(self, ctx: commands.Context):
+    embed=discord.Embed(title="Antinuke", description="""```Antinuke enable/disable ・ Antinuke config ・ features ・ whitelist add・ whitelist remove・ whitelist show ・ whitelist reset ・ channelclean ・ roleclean ・ recover ・ punishment set ・ punishment show```""", color=0xFF1B1B)
+    embed.set_thumbnail(url=self.bot.user.avatar)
+    embed.set_author(name=ctx.author, icon_url=ctx.author.display_avatar)
+        embed.set_footer(text="Made By Prince", icon_url=self.bot.user.avatar)
+        await ctx.reply(embed=embed)
   
 
 def setup(bot):

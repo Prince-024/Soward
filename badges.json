@@ -41,7 +41,8 @@
     ],
     "971317406322532362": [
         "FRND",
-        "<a:VL_Single:892880782614470677> OWNER SPECIAL"
+        "<a:VL_Single:892880782614470677> OWNER SPECIAL",
+        ":VL_Crown: OWNER"
     ],
     "985203051549822996": [
         "** <a:srv_heart:1003986632766148669> SRV's SPECIAL**",
@@ -141,15 +142,6 @@
     "748908938086449202": [
         "\u30fb STAFF \u2695\ufe0f"
     ],
-    "971301161678290964": [
-        "<:Owner:951828296784564275>  OWNER",
-        "<:TO_ye_lo_mera_dil:980482232693194782>  **Aravindu**"
-    ],
-    "1002306056279572561": [
-        "<:TO_ye_lo_mera_dil:980482232693194782> **SHRUTI BHABHI**",
-        "<a:1bap:952094581850255400> \ud835\udc12 \ud835\udc07 \ud835\udc11 \ud835\udc14 \ud835\udc13 \ud835\udc08 \ud83d\udd4a\ufe0f\n<:To_neer_cool:980482693848518676>  \ud835\udc15 \ud835\udc08 \ud835\udc0f\n<:EARLY_SUPPORTER:1017728098436919356>  \ud835\udc12 \ud835\udc14 \ud835\udc0f \ud835\udc0f \ud835\udc0e \ud835\udc11 \ud835\udc13 \ud835\udc04 \ud835\udc11 \n<a:913538291847016578:979244866167009280>  \ud835\udc05 \ud835\udc11 \ud835\udc08 \ud835\udc04 \ud835\udc0d \ud835\udc03",
-        "<:zzz_uwu:980484051729281054> \ud835\udc10 \ud835\udc14 \ud835\udc04 \ud835\udc04 \ud835\udc0d"
-    ],
     "534626237008707584": [
         "\ud83c\udf19  **Close Friend**"
     ],
@@ -183,33 +175,15 @@
         "<a:srv_dancing:969157462374613023> **Owner's Special**",
         "<:RA_hehehe:1018831363832549437> **Not 4 u Bitch**"
     ],
-    "873199457582321684": [
-        "<:916034095379787806:1029288902915268628> FRIEND\n<:tc_black_2_dil:1028162370444480623> SUPPORTER"
-    ],
     "973505691400691752": [
         "** <a:srv_dancing:969157462374613023> SRV's FRIEND**",
         "<a:drawheart:1018830999280431104> **SPECIAL RNDI**"
     ],
-    "960226887580397580": [
-        "<:heart:795098970388692992>  **VIP**"
-    ],
     "920532747666198549": [
         "** <:1D_crown:1005736590951325697>   GUEST**"
     ],
-    "841613681166647326": [
-        "<:TO_ye_lo_mera_dil:980482232693194782> **MUFFINS**"
-    ],
-    "873443113719451681": [
-        "<:916034095379787806:1029288902915268628> FRIENDS"
-    ],
-    "959888578643628063": [
-        "<:LR___myheart_forYou:878883549929934848> SUPPORTER \n<:LR_pink_hearts:987249916218847262> FRIEND"
-    ],
     "972496505225224263": [
         "<:tc_pink_heart:1028189991567888395> SUPPORTER\n<:tc_pink_heart:1028189991567888395> FRIEND\n<:tc_pink_heart:1028189991567888395> VIP"
-    ],
-    "939146868221415464": [
-        "<:tc_pink_heart:1028189991567888395> FRIEND\n<:tc_pink_heart:1028189991567888395> VIP"
     ],
     "979836814674259968": [
         "ok"
@@ -222,31 +196,12 @@
         "<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER\n<a:Staff_f:998870579027398656> STAFF",
         "<a:Luci_star:941222910247460884> THORY"
     ],
-    "930897193295028245": [
-        "<:tc_pink_heart:1028189991567888395> FRIEND"
-    ],
-    "980441852413095936": [
-        "<:Trail_Staff:1009914470241407066> **burnout ka majdur**",
-        "<a:ICS_anish_tunaktunak:975677000108875787> **King of burnout !**",
-        "<a:zz_money:1032362064284495892> **: Paise vala hu bc **",
-        "<:TO_ye_lo_mera_dil:980482232693194782>  **Aravind ka Bhai**"
-    ],
     "875723779660218378": [
         "<a:hug:1026523436195008606> close friend"
-    ],
-    "984815117730480228": [
-        "<a:qt_niku:1032254537530097674>  **! Harshu  \u05b4\u05b6\u05b8 xD \u2661\u3099**",
-        "<a:jazz_tick:1012328210245099541> **.gg/burnoutonfire**"
     ],
     "992832259646300280": [
         "<a:rz_sitting:1026523625945309184> <a:rz_sitting:1026523625945309184>",
         "<a:thory_z_dino_rr:1008112170430627901> <a:thory_z_dino_rr:1008112170430627901> <a:thory_z_dino_rr:1008112170430627901> <a:thory_z_dino_rr:1008112170430627901> <a:thory_z_dino_rr:1008112170430627901>"
-    ],
-    "821708583435239465": [
-        "<:bl_chidarha:1026523966451503227> <:bl_chidarha:1026523966451503227>",
-        "<:kkg_teddy_tameezse:1031446955668275262> **attitude vali hu **",
-        "<a:error:1012328241614295130> **I am wrong**",
-        "<:ch_jana_tu:1026523979491573761>  **Ignore krti hu **"
     ],
     "983787295578665000": [
         "<:NMR_baby_cute:999674153164607580> **Barun**"
@@ -267,16 +222,13 @@
         "\ud83d\udc51 **Owner**"
     ],
     "1018139793789563000": [
-        "<a:Developer:1017805058110402671>  \ud835\udc03\ud835\udc04\ud835\udc15\ud835\udc04\ud835\udc0b\ud835\udc0e\ud835\udc0f\ud835\udc04\ud835\udc11\n<a:scrown:1017804942515388546> \ud835\udc0e\ud835\udc16\ud835\udc0d\ud835\udc04\ud835\udc11"
+        "<a:Developer:1017805058110402671>  \ud835\udc03\ud835\udc04\ud835\udc15\ud835\udc04\ud835\udc0b\ud835\udc0e\ud835\udc0f\ud835\udc04\ud835\udc11\n<a:scrown:1017804942515388546> \ud835\udc0e\ud835\udc16\ud835\udc0d\ud835\udc04\ud835\udc11",
+        "<a:princeop:1034899140825583666> .gg/ishq",
+        "opp"
     ],
     "732990306928033832": [
         "<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER\n<a:spy_crown_moving:1028698001037852743> VIP",
         "<:panda_thankyou:1029745017306222663>**: close friend**"
-    ],
-    "969991261048164352": [
-        "<:Doraemonshy:941987981806407710>  \ud835\udc0a \ud835\udc11 \ud835\udc08 \ud835\udc12 \ud835\udc07 \ud835\udc0d \ud835\udc00\n<a:scrown:1017804942515388546>  \ud835\udc0e \ud835\udc16 \ud835\udc0d \ud835\udc04 \ud835\udc11\n<:EARLY_SUPPORTER:1017728098436919356>  \ud835\udc12 \ud835\udc14 \ud835\udc0f \ud835\udc0f \ud835\udc0e \ud835\udc11 \ud835\udc13 \ud835\udc04 \ud835\udc11\n<:FAY_bMad:936114885937475624>  \ud835\udc05 \ud835\udc11 \ud835\udc08 \ud835\udc04 \ud835\udc0d \ud835\udc03",
-        "<a:Staff_f:998870579027398656>  \ud835\udc12 \ud835\udc13 \ud835\udc00 \ud835\udc05 \ud835\udc05",
-        "<:blackdragon:1034837597215793253> \ud835\udc0a \ud835\udc08 \ud835\udc0d \ud835\udc06"
     ],
     "757317968853074003": [
         "<:cute_kid_stare:950373690967732265>  **Artist**"
@@ -291,26 +243,173 @@
     "1029595129373278238": [
         "<:Owner:951828296784564275>  **VIP**"
     ],
-    "979742287087165480": [
-        "<:ye_lo_fhol:1010196295119544430> \ud835\udc0f \ud835\udc11 \ud835\udc08 \ud835\udc18 \ud835\udc00"
-    ],
     "765826113342930976": [
         "<a:Adg_Pika:1031085230305574933>** : owner of burnout**"
     ],
     "316964825517260800": [
         "<:creep:1010211403417796618> VIP\n<:huggieee:1010197058428358656> FRIEND"
     ],
-    "723802934378233897": [
-        "<:admin:951282555208994877>  OWNER"
-    ],
-    "878005505010860112": [
-        "<:TumBhiNaa_DH:1031915528207474718> \ud835\udc12\ud835\udc07\ud835\udc11\ud835\udc14\ud835\udc13\ud835\udc08 \ud835\udc0a\ud835\udc00 \ud835\udc00\ud835\udc00\ud835\udc12\ud835\udc07\ud835\udc08\ud835\udc10",
-        "<:Owner:951828296784564275> Sarpanch \ud83d\udd4a\ufe0f\n<:mingle:977848300910833694> Vip\n<:TO_you_naughty:980482165592703047> \ud835\udc12 \ud835\udc14 \ud835\udc0f \ud835\udc0f \ud835\udc0e \ud835\udc11 \ud835\udc13 \ud835\udc04 \ud835\udc11\n<:admin:951282555208994877> \ud835\udc05 \ud835\udc11 \ud835\udc08 \ud835\udc04 \ud835\udc0d \ud835\udc03"
-    ],
     "987410191203065956": [
-        "**<:mp_gfx:1035558259454644305> : GFX ARTIST  \n<:Sourav:1015549057470562304> : ! Paras \u05b4\u05b6\u05b8 xD **"
+        "**<:mp_gfx:1035558259454644305> : GFX ARTIST  \n<:Sourav:1015549057470562304> : ! Paras \u05b4\u05b6\u05b8 xD **",
+        "<a:RE__black_skull:1033646165016711188> : VIP",
+        "<a:HLE:1029640193340354560> : FRND"
     ],
     "937650386284724244": [
         "<a:Staff_f:998870579027398656> STAFF"
+    ],
+    "1017130532229877770": [
+        "<a:BRV_Depressed_Drunk:942113527806718012> VILLEN"
+    ],
+    "733749792991215668": [
+        "<:fucking_goods:1035810581199999026> SUPPORTER\n<:please:1035797376729874502> VIP \n<:zzz_thorki_smile:1035750870010318888> FRIEND"
+    ],
+    "930897193295028245": [
+        "<:bl_yekyhua:1035796974135427083> FRIEND\n<:x_exo_lol:1035749866032353321> SINGLE"
+    ],
+    "873199457582321684": [
+        "<:bl_yekyhua:1035796974135427083> SUPPORTER\n<:Nfs_Ik:1035810578230423633> FRIEND",
+        "RANDI",
+        "<a:be_lundtutaaa:1024044306417336420> GANDA BACHA"
+    ],
+    "723802934378233897": [
+        "<a:scrown:1017804942515388546> OWNER"
+    ],
+    "959888578643628063": [
+        "<:exo_pink_heart:984700466816483348> SUPPORTER\n<:exo_pink_heart:984700466816483348> VIP\n<:exo_pink_heart:984700466816483348> FRIEND"
+    ],
+    "996032375047860254": [
+        "<:eros_smile:1035846572715552798>  **S\u03b1g\u03b1\u044f**"
+    ],
+    "996723536649527357": [
+        "<:Member:998868959489171556> MEMBER"
+    ],
+    "979742287087165480": [
+        "<a:BigHeart_Pink:1023498790474358844> \ud835\udc0d \ud835\udc08 \ud835\udc0a \ud835\udc0a \ud835\udc08\n<a:queen_crown:1024306993760047104> \ud835\udc10 \ud835\udc14 \ud835\udc04 \ud835\udc04 \ud835\udc0d\n<:zzzzzbhavii_peek:1008404007393431644> \ud835\udc15 \ud835\udc08 \ud835\udc0f"
+    ],
+    "928214085584166943": [
+        "<a:stolen:1027915231315382383>  \ud835\udc05\ud835\udc00\ud835\udc0c\ud835\udc01\ud835\udc11\ud835\udc14\ud835\udc07\n<a:scrown:1017804942515388546>  \ud835\udc0e\ud835\udc16\ud835\udc0d\ud835\udc04\ud835\udc11\n<a:guy:1027923066610790481> \ud835\udc06\ud835\udc00\ud835\udc0c\ud835\udc04 \ud835\udc02\ud835\udc07\ud835\udc00\ud835\udc0d\ud835\udc06\ud835\udc04\ud835\udc11\n<:c2h_yo_bro:1035846617301012480>  \ud835\udc00\ud835\udc12\ud835\udc13\ud835\udc04\ud835\udc11\ud835\udc0e\ud835\udc08\ud835\udc03 \ud835\udc0e\ud835\udc0f",
+        "<:FF_Gen_ayeee_hayeee:1031501572460523520> \ud835\udc12\ud835\udc0f\ud835\udc04\ud835\udc02\ud835\udc08\ud835\udc00\ud835\udc0b \n<a:BRV_Depressed_Drunk:942113527806718012> \ud835\udc15\ud835\udc08\ud835\udc0f"
+    ],
+    "794121844567179285": [
+        "<:Lara_friendly:1017773379350167642> FRIEND\n<:FULL_SUPPORT:1010472596078329856> SUPPORTER"
+    ],
+    "1007392517458763796": [
+        "<:bn_x_sneak:1008111451656945705>  **! PRiTi.\ud83d\udc3e **"
+    ],
+    "963065683934072892": [
+        "<:CuteBears:1037307178958196736>  **Dev \ud83e\udd40**",
+        "<:bn_x_sneak:1008111451656945705>  **Host....!!!!**"
+    ],
+    "870877884552720404": [
+        "<a:PE_PC_Animated:1036184844159434833> VIP"
+    ],
+    "992106563022094418": [
+        "<a:stolen_emoji:1035650371672100924> **: KING OF NMR !**"
+    ],
+    "248563599579021312": [
+        "<:ICS_TeddyHeart:975791476317491250> : **!\ufe52\u0405\u03c3\u043c\u0454\u03c3\u03b7\u0454 \u2039\ud835\udff9<:str_ext_ily:1035157966971740160> **"
+    ],
+    "980441852413095936": [
+        "<:Lt_fuckOffBeep:1038039426313494548> **: \u2301 \ud835\udc4b \ud835\udc67 \ud835\udc42 \ud835\udc5f \u00f8 .**"
+    ],
+    "821708583435239465": [
+        "busy"
+    ],
+    "890858444989534238": [
+        "<a:Cosy_08_letterS:1037972413582938112> <a:Cosy_13_letterN:1037973071098818670> <a:Cosy_22_letterE:1037973680866721823> <a:Cosy_19_letterH:1037972435657568276>"
+    ],
+    "873443113719451681": [
+        "<a:peek:1037236667356028968> VIP \n<a:_male:1037430262738464872>  FRIEND"
+    ],
+    "879632217352044577": [
+        "<a:Staff_f:998870579027398656> STAFF"
+    ],
+    "949942648343502908": [
+        "<a:Black_flame:1031846389833015296> VIP \n<a:HT_TableTodo:1031574102034620507> FRND"
+    ],
+    "927910957995405362": [
+        "DOGLA"
+    ],
+    "939146868221415464": [
+        "CHOTI LULLI KABIR <a:bff_ye_kaise:1037321632890499083>"
+    ],
+    "1002306056279572561": [
+        "<:c2h_yo_bro:1038432083221160057> \ud835\udc12 \ud835\udc07 \ud835\udc11 \ud835\udc14 \ud835\udc13 \ud835\udc08 \ud83d\udd4a\ufe0f\n<:x_exo_dollr:984713116334063618>  \ud835\udc10 \ud835\udc14 \ud835\udc04 \ud835\udc04 \ud835\udc0d\n<:Zzzzzzzzzzzzz_hex_dil:1008359995122909264> \ud835\udc15 \ud835\udc08 \ud835\udc0f\n<:Zzzzzzzzzzzzzz_hex_pyaar_aagya:971640406947299348> \ud835\udc12 \ud835\udc14 \ud835\udc0f \ud835\udc0f \ud835\udc0e \ud835\udc11 \ud835\udc13 \ud835\udc04 \ud835\udc11",
+        "<:zzzzzz_hex_xHeart_1:971649805354934282> \ud835\udc05 \ud835\udc11 \ud835\udc08 \ud835\udc04 \ud835\udc0d \ud835\udc03"
+    ],
+    "1010087794422591498": [
+        "<:mod:1030474911656976514> \u2022 **supporter**",
+        "<a:31:1027542140118638653> VIP"
+    ],
+    "875038525144305725": [
+        "<a:Staff_f:998870579027398656> STAFF"
+    ],
+    "956115537681858570": [
+        "<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER",
+        "<a:31:1027542140118638653> VIP"
+    ],
+    "1037287872694329424": [
+        "<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER"
+    ],
+    "975012142640169020": [
+        "<a:aSQ_Snippy:934692126065827900> FRND \n<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER \n<a:31:1027542140118638653> VIP"
+    ],
+    "1004304436845367367": [
+        "<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER\n<a:Cosy_white_gun:983742479587229756> FRIEND",
+        "<:VIP:1008246493607637032> VIP"
+    ],
+    "969991261048164352": [
+        "<a:male_2:1037254068361515018> \ud835\udc0a \ud835\udc11 \ud835\udc08 \ud835\udc12 \ud835\udc07 \ud835\udc0d \ud835\udc00\n<a:Nuking_Residence:1037430244879110185> \ud835\udc0a \ud835\udc08 \ud835\udc0d \ud835\udc06\n<a:XE_niks_crown:1037254050904805416> \ud835\udc0e \ud835\udc16 \ud835\udc0d \ud835\udc04 \ud835\udc11"
+    ],
+    "894227973236990062": [
+        "<:emoji_2:1039337685971632188> : **close friend**"
+    ],
+    "987354705317478500": [
+        "<a:TEAM_SOWARD:1039939734388084836> STAFF"
+    ],
+    "960226887580397580": [
+        "<a:AP_Sip:1037280005501227058> VIP\n<:Dog:1037234660511584326> AKHAND CHUTIYA"
+    ],
+    "733283488362528799": [
+        "<a:31:1027542140118638653> FRND",
+        "<a:TEAM_SOWARD:1039939734388084836> STAFF",
+        "<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER"
+    ],
+    "987641998045487114": [
+        "<a:aSQ_Snippy:934692126065827900> CLOSE FRIEND"
+    ],
+    "943024567612493894": [
+        "<a:vips:1035628389295464579> VIP\n<a:zz_thory_nibbi_shake:1008111505855742093> FRND",
+        "<:EARLY_SUPPORTER:1017728098436919356> SUPPORTER"
+    ],
+    "866714072174034965": [
+        "<:exo_sochraha:1040751133540483115> \u2022 **Close friend**"
+    ],
+    "869511004197908490": [
+        "<:p_number_1:1037315976334675988> ***shrutiii .***",
+        "<:p_number_2:1037315977886580796> ***Sv -.gg/ishq .***\n<:p_number_3:1037315980956798987> ***Queen .***",
+        "<:p_number_4:1037315982131212338> **Supporter**\n<:p_number_5:1037315983083327538> ***Sarpanch<3 .***"
+    ],
+    "878005505010860112": [
+        "<:en_right_arrow:1040564635021086780> \u2022 **Supporter**",
+        "<:en_right_arrow:1040564635021086780> \u2022 **.gg/ishq**",
+        "<:en_right_arrow:1040564635021086780> \u2022 ***Shruti </3***"
+    ],
+    "841613681166647326": [
+        "<a:kelebek:1002159225423794186>  MUFFINS",
+        "<a:twerkbaby:1040294861561151539> .gg/ishq"
+    ],
+    "164202861356515328": [
+        "<:p_number_1:1037315976334675988> FRND\n<:p_number_2:1037315977324544020> .gg/ishq"
+    ],
+    "1028965762850885652": [
+        "<a:vips:1035628389295464579> VIP",
+        "<:patpat:1040599219980992553> dev"
+    ],
+    "1031769642194182216": [
+        "lawde ka ownr"
+    ],
+    "1032688262361395251": [
+        "<:zzzz_heart_give_c2h:1073725609370456258> <:zzzz_heart_give_c2h:1073725609370456258> <:zzzz_heart_give_c2h:1073725609370456258> <:zzzz_heart_give_c2h:1073725609370456258>"
     ]
 }

@@ -721,7 +721,7 @@ def is_user_blacklisted():
             return True
         else:
             raise Blacklisted(
-                "It appears that you're blacklisted from this bot. Contact Ender2K89#9999 if you think this is a mistake.")
+                "It appears that you're blacklisted from this bot. Contact  if you think this is a mistake.")
 
     return commands.check(predicate)
 

@@ -1,0 +1,108 @@
+import string
+import discord
+import asyncio
+from utilities.Tools import*
+from .utils.config import DEFAULT_COLOR
+from discord.ext import commands
+from datetime import datetime, timedelta
+from views import help as vhelp #need big refactor
+
+class HelpCommand(commands.HelpCommand):
+    """Help command"""
+        
+
+
+    
+    async def on_help_command_error(self, ctx, error) -> None:
+            
+        handledErrors = [
+            commands.CommandOnCooldown, 
+            commands.CommandNotFound
+        ]
+
+        if not type(error) in handledErrors:
+            print("! Help command Error :", error, type(error), type(error).__name__)
+            return await super().on_help_command_error(ctx, error)
+
+    def command_not_found(self, string) -> None:
+        raise commands.CommandNotFound(f"Command {string} is not found")
+    
+    async def send_bot_help(self,mapping):
+        
+
+        
+        
+        allowed = 5
+        
+        close_in = round(datetime.timestamp(datetime.now() + timedelta(minutes=allowed)))
+        embed = discord.Embed(color = 0xFF1B1B)
+        embed.set_thumbnail(url ="https://images-ext-1.discordapp.net/external/XrJavR2bQK47KNCY3DnTog-f4QPNg2NQLI-_UV5zRCM/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1004248513435152484/901eaf50a9e389a7e00cab6c06a2bb59.png")
+#        embed.set_image(url="https://cdn.discordapp.com/attachments/981877607597481989/983972390973349958/standard_4.gif")
+      #  embed.set_author(name=f"{author.name}", icon_url=author.display_avatar.url )
+        embed.set_footer(text=f"Made By Prince")
+        embed.add_field(name="Soward ", value=f"Discord Multipurpose bot with  Moderation, ticket, information, utility and more. default Prefix = $ \n\n  [Get Soward](https://discord.com/oauth2/authorize?client_id=1004248513435152484&permissions=1101052116095&scope=applications.commands%20bot) | [Support](https://discord.gg/q8es72uZ7X)\n\n<:ModulesEmoji:1027644549310464030>__** COMMAND MODULE**__**\n\n<:eg_shield:1018057685637275670> • **Antinuke**\n<a:moderation_animated:1017402486258151534> •  **Moderation**\n<:utility:1017405604987404408> • **Utility**\n<a:sinfo:1021052539216609351> • **Info**\n<:Ticket:1017405493477638205> • **Ticket**\n<a:welcome:1017405722226610247> • **Welcomes**\n<a:coins:1017429986833076234> • **Economy**\n<a:orbs:1038494668821901373> • **Extra**\n<a:voice:1017402454159147039> • **Join2Crete**\n<a:bolt:1018057711251902494> • **Autorole**\n <a:sgames:1017404466833657918> • **Games**\n<:icons8discorde64:1017404784900325406> • **General**\n<a:ch_music:1017402433267322910> • **Fun**\n<:FN_pinkblush_heart:1076443807056412713> • **Selfrole\n\n``` $<module> ex:$welcomes```", inline=True)
+
+
+        view = vhelp.View(mapping = mapping, ctx = self.context, homeembed = embed, ui = 2)
+        message = await self.context.send(embed = embed)
+        try:
+            await asyncio.sleep(60*allowed)
+            view.stop()
+            await message.delete()
+        except: pass
+
+    async def send_command_help(self, command):
+        cog = command.cog
+        if "help_custom" in dir(cog):
+            emoji, label, _ = cog.help_custom()
+            embed = discord.Embed(title = f"Help · {label} : {command.name}", description=f"**command** : {command.name}\n{command.help}", url="https://discord.gg/yxXeVEpdbP", color = 0xFF1B1B)
+            params = ""
+            for param in command.clean_params: 
+                params += f" <{param}>"
+            embed.add_field(name="Usage", value=f"{command.name}{params}", inline=False)
+            embed.add_field(name="Aliases", value=f"{command.aliases}`")
+            embed.set_footer(text="Made By Prince", icon_url=self.context.message.author.display_avatar.url)
+            await self.context.send(embed=embed)
+
+    async def send_cog_help(self, cog):
+        if "help_custom" in dir(cog):
+            emoji, label, _ = cog.help_custom()
+            embed = discord.Embed(title = f"Help ", url="https://discord.gg/yxXeVEpdbP", color = 0xFF1B1B)
+            for command in cog.get_commands():
+                params = ""
+                for param in command.clean_params: 
+                    params += f" <{param}>"
+                embed.add_field(name=f"{command.name}{params}", value=f"{command.help}\n\u200b", inline=False)
+            embed.set_footer(text="Made By Prince", icon_url=self.context.message.author.display_avatar.url)
+            await self.context.send(embed=embed)
+
+    async def send_group_help(self, group):
+        await self.context.send("Group commands unavailable.")
+     
+
+class Help(commands.Cog, name="help"):
+    """Help commands."""
+    
+    def __init__(self, bot):
+        self._original_help_command = bot.help_command
+
+        attributes = {
+            'name': "help",
+            'aliases': ['h'],
+            'cooldown': commands.CooldownMapping.from_cooldown(1, 5, commands.BucketType.user) # discordpy2.0
+        } 
+
+        bot.help_command = HelpCommand(command_attrs=attributes)
+        bot.help_command.cog = self
+        
+    def cog_unload(self):
+        self.bot.help_command = self._original_help_command
+
+    def help_custom(self):
+        emoji = '<a:sq:1017393718329872425>'
+        label = "Help"
+        description = ""
+        return emoji, label, description
+
+def setup(bot):
+	bot.add_cog(Help(bot))

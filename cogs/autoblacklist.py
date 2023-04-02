@@ -1,5 +1,5 @@
 import discord
-from core.Soward import Soward
+#from core.Soward import Soward
 from discord.ext import commands
 from utilities.Tools import add_user_to_blacklist
 
@@ -8,7 +8,7 @@ from utilities.Tools import add_user_to_blacklist
     #self.client = client
 
 class AutoBlacklist(commands.Cog):
-    def __init__(self, client: Soward):
+    def __init__(self, client):
       self.client = client
       self.spam_cd_mapping = commands.CooldownMapping.from_cooldown(5, 5, commands.BucketType.member)
       self.spam_command_mapping = commands.CooldownMapping.from_cooldown(6, 10, commands.BucketType.member)

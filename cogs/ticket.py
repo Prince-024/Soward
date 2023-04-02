@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ui import Button, View
 import asyncio
-from .utils.config import *
+from cogs.utils.config import *
 from utilities.Tools import*
 class close(Button):
     def __init__(self):
@@ -40,7 +40,7 @@ class create(Button):
         embed = discord.Embed(
                     title=f'Ticket',
                     description=f'Thanks for reaching out!\nThe support Team will be here shortly\nPlease be patient.\n\nClick <a:bx_aPepeExit:1017725711273955338> to close the ticket.',
-                    color = 0x13dd4e
+                    color = 0xFF1B1B
                 )
         await channel.send(f'{interaction.user.mention} Welcome ', embed=embed, view=closeTicket())
 
@@ -57,14 +57,14 @@ class TicketCog(commands.Cog):
 
 
   
-    @commands.group(name="Ticket", description="Ticket Setup")
-    async def ticket(self, ctx: commands.Context):
+    @commands.group(name="Tickett", description="Ticket Setup")
+    async def tickett(self, ctx: commands.Context):
         ...
     @commands.command()
     @blacklist_check()
     @commands.has_permissions(manage_guild=True)
     async def sendpanel(self, ctx: commands.Context, channel: discord.TextChannel = None):
-        embed = discord.Embed(title=f'Ticket', description=f'>>> To create a ticket click the <:Ticket:1017405493477638205> button.', color=0x2f3136)
+        embed = discord.Embed(title=f'Ticket', description=f'>>> To create a ticket click the <:Ticket:1017405493477638205> button.', color=0xFF1B1B)
         embed.set_thumbnail(url=self.bot.user.avatar)
         embed.set_footer(text=' - Ticket Tool')
         guild = ctx.guild       

@@ -38,7 +38,7 @@ class Guild(Cog):
   #  prefix = data["prefix"]
     async for entry in guild.audit_logs(limit=3):
       if entry.action == discord.AuditLogAction.bot_add:
-        embed = discord.Embed(description=f"Hey **{entry.user}**, Thanks for Adding me in your server\n**Links:**\n  [Invite Link](https://discord.com/api/oauth2/authorize?client_id=1004248513435152484&permissions=8&scope=bot)\n  [Support Server](https://discord.gg/meta-development)", color=discord.Colour(0x2f3136))
+        embed = discord.Embed(description=f"Hey **{entry.user}**, Thanks for Adding me in your server\n**Links:**\n  [Invite Link](https://discord.com/api/oauth2/authorize?client_id=1004248513435152484&permissions=8&scope=bot)\n  [Support Server](https://discord.gg/meta-development)", color=discord.Colour(0xFF1B1B))
         try:
           await entry.user.send(embed=embed)
         except:

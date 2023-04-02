@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.hol
     pkgs.myrddin
     pkgs.python38Full
   ];

@@ -6,7 +6,7 @@ import humanfriendly
 import datetime
 from discord.ext import commands
 import aiohttp
-from cogs.utils.lister import lister
+#from cogs.utils.lister import lister
 from io import BytesIO
 from utilities.Tools import*
 
@@ -30,14 +30,14 @@ class moderation(commands.Cog):
         """
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
             if reason is None:
                 reason = f" No reason given.\nBanned by "
                 await member.ban(reason=reason)
                 await member.send(f"you have been bannef from {ctx.guild.name} for {reason} by {ctx.author} ")
                 await member.unban(reason=reason)
-                await ctx.send(embed=discord.Embed(title=f"<:eg_ban:1018057629114826792> | Sucessfully soft-banned {member}.", color=0x2f3136))
+                await ctx.send(embed=discord.Embed(title=f"<:eg_ban:1018057629114826792> | Sucessfully soft-banned {member}.", color=0xFF1B1B))
 
     @commands.command(aliases=['tb'])
     @commands.guild_only()
@@ -47,11 +47,11 @@ class moderation(commands.Cog):
     async def tempban(self, ctx, member: discord.Member, time, d, *, reason="No Reason"):
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
             await ctx.reply(embed=embed)
         else:
             guild = ctx.guild
-            embed = discord.Embed(title="Temporarily banned", description=f"<:sowlbz:989006711920668703> | {member.mention} has been temporarily banned!", colour=discord.Colour.blue(), timestamp=datetime.datetime.utcnow())
+            embed = discord.Embed(title="Temporarily banned", description=f" {member.mention} has been temporarily banned!", color=0xFF1B1B, timestamp=datetime.datetime.utcnow())
             embed.add_field(name="Reason: ", value=reason, inline=False)
             embed.add_field(name="Time left for the ban:", value=f"{time}{d}", inline=False)
             await ctx.reply(embed=embed)
@@ -80,23 +80,23 @@ class moderation(commands.Cog):
             await ctx.send(f" | You are not connected to any voice channels")
         else:
             member_list = ctx.message.author.voice.channel.members
-            color = 0x2f3136
+            color = 0xFF1B1B
             await lister(ctx,your_list=member_list,color=color,title=f"List of members in {ctx.message.author.voice.channel.name}")
     @commands.group(invoke_without_command=True)
     @blacklist_check()
     @commands.has_guild_permissions(manage_messages=True)
     async def purge(self, ctx,amount:int=10):
         if amount >1000:
-            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0x2f3136))
+            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0xFF1B1B))
         deleted = await ctx.channel.purge(limit=amount+1)
-        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)-1} message", color=0x2f3136), delete_after=5)
+        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)-1} message", color=0xFF1B1B), delete_after=5)
 
     @purge.command()
     @blacklist_check()
     @commands.has_guild_permissions(manage_messages=True)
     async def startswith(self, ctx, key, amount: int = 10):
         if amount >1000:
-            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0x2f3136), delete_after=5)
+            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0xFF1B1B), delete_after=5)
         global counter
         counter = 0
 
@@ -111,14 +111,14 @@ class moderation(commands.Cog):
             else:
                 return False
         deleted = await ctx.channel.purge(limit=100, check=check)
-        return await ctx.send(embeddiscord.Emfbed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which started with the given keyword", color=0x2f3136), delete_after=5)
+        return await ctx.send(embeddiscord.Emfbed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which started with the given keyword", color=0xFF1B1B), delete_after=5)
 
     @purge.command()
     @blacklist_check()
     @commands.has_guild_permissions(manage_messages=True)
     async def endswith(self, ctx, key, amount: int = 10):
         if amount >1000:
-            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0x2f3136), delete_after=5)
+            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0xFF1B1B), delete_after=5)
         global counter
         counter = 0
 
@@ -133,14 +133,14 @@ class moderation(commands.Cog):
             else:
                 return False
         deleted = await ctx.channel.purge(limit=100, check=check)
-        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which ended with the given keyword", color=0x2f3136), delete_after=5)
+        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which ended with the given keyword", color=0xFF1B1B), delete_after=5)
 
     @purge.command()
     @blacklist_check()
     @commands.has_guild_permissions(manage_messages=True)
     async def contains(self, ctx, key, amount: int = 10):
         if amount >1000:
-            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0x2f3136), delete_after=5)
+            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0xFF1B1B), delete_after=5)
         global counter
         counter = 0
 
@@ -155,14 +155,14 @@ class moderation(commands.Cog):
             else:
                 return False
         deleted = await ctx.channel.purge(limit=100, check=check)
-        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which contained the given keyword", color=0x2f3136), delete_after=5)
+        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which contained the given keyword", color=0xFF1B1B), delete_after=5)
 
     @purge.command()
     @blacklist_check()
     @commands.has_guild_permissions(manage_messages=True)
     async def user(self, ctx, user: discord.Member, amount: int = 10):
         if amount >1000:
-            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0x2f3136), delete_after=5)
+            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0xFF1B1B), delete_after=5)
         global counter
         counter = 0
 
@@ -177,14 +177,14 @@ class moderation(commands.Cog):
             else:
                 return False
         deleted = await ctx.channel.purge(limit=100, check=check)
-        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which were sent by the mentioned user", color=0x2f3136), delete_after=5)
+        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which were sent by the mentioned user", color=0xFF1B1B), delete_after=5)
 
     @purge.command()
     @blacklist_check()
     @commands.has_guild_permissions(manage_messages=True)
     async def invites(self, ctx, amount: int = 10):
         if amount >1000:
-            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0x2f3136), delete_after=5)
+            return await ctx.send(embed=discord.Embed(title="Purge limit exceeded. Please provide an integer which is less than or equal to 1000.", color=0xFF1B1B), delete_after=5)
         global counter
         counter = 0
 
@@ -199,7 +199,7 @@ class moderation(commands.Cog):
             else:
                 return False
         deleted = await ctx.channel.purge(limit=100, check=check)
-        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which contained invites", color=0x2f3136), delete_after=5)
+        return await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Deleted {len(deleted)}/{amount} message(s) which contained invites", color=0xFF1B1B), delete_after=5)
 
 # TODO: add proper cooldowns to all the commands listed here
 # TODO ability to 
@@ -207,14 +207,14 @@ class moderation(commands.Cog):
     @commands.command(aliases=('listbots','lbots','lbot','botlist','botslist'))
     @blacklist_check()
   #@commands.bot_has_permissions(send_messages=True)
-    async def bots(self,ctx):
+    async def bots12s2(self,ctx):
         ''' Lists the bots in your server '''
         bots_list = []
         for m in ctx.guild.members:
             if m.bot:
                 bots_list.append(m)
-        color = await self.fetch_color(ctx)
-        await lister(ctx,your_list=bots_list,color=color,title=f"List of bots in {ctx.guild.name}")
+      #  color = await self.fetch_color(ctx)
+        await lister(ctx,your_list=bots_list,title=f"List of bots in {ctx.guild.name}")
       
     @commands.command()
     @blacklist_check()
@@ -238,7 +238,7 @@ class moderation(commands.Cog):
     @commands.command(aliases=['mutehoja'], usage=" <member> <time>")
     @commands.guild_only()
     @blacklist_check()
-    @commands.has_permissions(moderate_members=True)
+    @commands.has_permissions(manage_roles=True)
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def mute(self, ctx, member: discord.Member, duration, *, reason=None):
         """
@@ -259,7 +259,7 @@ class moderation(commands.Cog):
             reason=reason
         )
         await member.send(f":exclamation: | You have been muted from: {ctx.guild.name} by {ctx.author.name}")
-        await ctx.send(embed=discord.Embed(title=f" {member} has been timed out for {duration}.\nReason: {reason}", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f" {member} has been timed out for {duration}.\nReason: {reason}", color=0xFF1B1B))
 
     @commands.command(aliases=['unm'])
     @blacklist_check()
@@ -273,13 +273,13 @@ class moderation(commands.Cog):
         
 
 
-    @commands.command(name='kick', help="Somebody is breaking rules again and again | ban him from the server as punishment", aliases=['k'], usage=" <member> <reason>")
+    @commands.command(name='kick', help="Somebody is breaking rules again and again | ban him from the server as punishment", usage=" <member> <reason>")
     @blacklist_check()
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx: commands.Context, member: discord.Member, *, reason=None):
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
             if reason is None:
                 reason = f"action done by {ctx.author}"
@@ -304,12 +304,17 @@ class moderation(commands.Cog):
         reason = f"responsible {ctx.author}"
 
 
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Adding {role.name} to all humans!", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Adding {role.name} to all humans!", color=0xFF1B1B))
 
         humans = [mem for mem in ctx.guild.members if not mem.bot]
         for h in humans:
             await h.add_roles(role, reason=reason)
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Successfully given {role.name} to all members!", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Successfully given {role.name} to all members!", color=0xFF1B1B))
+            
+            
+
+
+ 
 
     @commands.command(usage="<role/id>")
     @blacklist_check()
@@ -318,12 +323,12 @@ class moderation(commands.Cog):
         ''' Give all bots any role '''
         reason = f"responsible {ctx.author}"
 
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Adding {role.name} to all bots!", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Adding {role.name} to all bots!", color=0xFF1B1B))
 
         humans = [mem for mem in ctx.guild.members if mem.bot]
         for h in humans:
             await h.add_roles(role, reason=reason)
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Successfully given {role.name} to all bots!", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Successfully given {role.name} to all bots!", color=0xFF1B1B))
 
     @commands.command(usage="<role/id>")
     @blacklist_check()
@@ -331,12 +336,12 @@ class moderation(commands.Cog):
     async def removeallhumans(self,ctx,role:discord.Role, reason=None):
         ''' Removes a role from all human members '''
         reason = f"responsible {ctx.author}"
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Removing {role.name} from all humans!", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Removing {role.name} from all humans!", color=0xFF1B1B))
 
         humans = [mem for mem in ctx.guild.members if not mem.bot]
         for h in humans:
             await h.remove_roles(role, reason=reason)
-        await ctx.send(embed=discord.Embed(title="<:tick_right:1003345911067443241> | Successfully removed {role.name} from all members!", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Successfully removed {role.name} from all members!", color=0xFF1B1B))
 
     @commands.command(usage="<role/id>")
     @blacklist_check()
@@ -344,20 +349,20 @@ class moderation(commands.Cog):
     async def removeallbots(self,ctx,role:discord.Role, reason=None):
         ''' Removes a role from all the bots '''
         reason = f"responsible {ctx.author}"
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Removing  {role.name} from all bots!", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | Removing  {role.name} from all bots!", color=0xFF1B1B))
 
         humans = [mem for mem in ctx.guild.members if mem.bot]
         for h in humans:
             await h.remove_roles(role, reason=reason)
-        await ctx.send(embed= discord.Embed(title=f"<:tick_right:1003345911067443241> | Successfully removed {role.name} from all bots!", color=0x2f3136))
+        await ctx.send(embed= discord.Embed(title=f"<:tick_right:1003345911067443241> | Successfully removed {role.name} from all bots!", color=0xFF1B1B))
 
   
     @commands.command(aliases=['w'], usage="<member> <reason>")
     @blacklist_check()
     @commands.has_permissions(kick_members=True)
     async def warn(self, ctx, member: discord.Member, * , reason="No Reason Provided!"):
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been warned for: {reason}", color=0x2f3136))
-        await member.send(embed=discord.Embed(title=f":exclamation: | You have been warned in {ctx.guild.name} for: {reason}", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been warned for: {reason}", color=0xFF1B1B))
+        await member.send(embed=discord.Embed(title=f":exclamation: | You have been warned in {ctx.guild.name} for: {reason}", color=0xFF1B1B))
 
 
 
@@ -368,28 +373,28 @@ class moderation(commands.Cog):
     @blacklist_check()
     @commands.has_permissions(manage_messages=True)
     async def vcdeafen(self, ctx, user: discord.Member, * , reason=None):
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {user.display_name} has been deafened, for: {reason}", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {user.display_name} has been deafened, for: {reason}", color=0xFF1B1B))
         await user.edit(deafen = True)
 
     @commands.command(aliases=["vm"], usage="<member>")
     @blacklist_check()
     @commands.has_permissions(manage_messages=True)
     async def vcmute(self, ctx, member: discord.Member, * , reason=None):
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been muted, for: {reason}", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been muted, for: {reason}", color=0xFF1B1B))
         await member.edit(mute = True)
 
     @commands.command(usage="<member>")
     @blacklist_check()
     @commands.has_permissions(manage_messages=True)
     async def vcunmute(self, ctx, member: discord.Member):
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been unmuted.", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been unmuted.", color=0xFF1B1B))
         await member.edit(mute = False)
 
     @commands.command(usage="<member>")
     @blacklist_check()
     @commands.has_permissions(manage_messages=True)
     async def vcundeafen(self, ctx, member: discord.Member):
-        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been undeafened.", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {member.display_name} has been undeafened.", color=0xFF1B1B))
         await member.edit(deafen = False)
 
     @commands.command(usage="<emoji>")
@@ -397,7 +402,7 @@ class moderation(commands.Cog):
     @commands.has_permissions(manage_emojis=True)
     async def delemoji(self, ctx, emoji: discord.Emoji):
         await emoji.delete()
-        await ctx.send(embed=discord.Embed(title="<:tick_right:1003345911067443241> | emoji has been deleted.", color=0x2f3136))
+        await ctx.send(embed=discord.Embed(title="<:tick_right:1003345911067443241> | emoji has been deleted.", color=0xFF1B1B))
 
     @commands.command()
     async def steal123(self, ctx, url:str, *, name = None):
@@ -427,13 +432,13 @@ class moderation(commands.Cog):
     async def ban(self, ctx: commands.Context, member: discord.Member, *, reason=None):
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
             if reason is None:
                 reason = f"action done by {ctx.author}"
             await member.ban(reason=reason)
-            await ctx.send(embed=discord.Embed(title=f"<:eg_ban:1018057629114826792> | {member.display_name} has been successfully banned", color=0x2f3136))
-            await member.send(embed=discord.Embed(title=f"<:eg_ban:1018057629114826792> | You have been banned from {ctx.message.guild.name} for reason: {reason} by {ctx.author.name}", color=0x2f3136))
+            await ctx.send(embed=discord.Embed(title=f"<:eg_ban:1018057629114826792> | {member.display_name} has been successfully banned", color=0xFF1B1B))
+            await member.send(embed=discord.Embed(title=f"<:eg_ban:1018057629114826792> | You have been banned from {ctx.message.guild.name} for reason: {reason} by {ctx.author.name}", color=0xFF1B1B))
                 
                 
 
@@ -473,18 +478,23 @@ class moderation(commands.Cog):
     async def unban(self, ctx, id: int):
         me = ctx.guild.me
         if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
-            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0x2f3136))
+            await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
         else:
             user = await self.bot.fetch_user(id)
             await ctx.guild.unban(user)
-            await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {user.name} has been successfully unbanned", color=0x2f3136))
+            await ctx.send(embed=discord.Embed(title=f"<:tick_right:1003345911067443241> | {user.name} has been successfully unbanned", color=0xFF1B1B))
 
     @commands.command()
     @blacklist_check()
     @commands.has_permissions(manage_channels=True)
-    async def clone(self, ctx, channel: discord.TextChannel):
-        await channel.clone()
-        await ctx.send(f"<:tick_right:1003345911067443241> | {channel.name} has been successfully cloned")
+    async def clone(self, ctx, channel: discord.TextChannel, reason=None):
+            me = ctx.guild.me
+            if me.top_role >= ctx.message.author.top_role and ctx.message.author.id != ctx.guild.owner_id:
+                    await ctx.reply(embed=discord.Embed(title="You must have role above me to use this cmd.", color=0xFF1B1B))
+            else:
+                    reason = f"responsible {ctx.author}"
+                    await channel.clone(reason=reason)
+                    await ctx.send(f"<:tick_right:1003345911067443241> | {channel.name} has been successfully cloned")
 
 
 

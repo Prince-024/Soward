@@ -8,7 +8,7 @@ from itertools import cycle
 import threading
 import datetime
 import logging
-from core import Soward
+#from core import Soward
 import time
 import asyncio
 import aiohttp
@@ -28,7 +28,7 @@ proxs = cycle(proxies)
 proxies={"http": 'http://' + next(proxs)}
 
 class antiemojid(Cog):
-    def __init__(self, client: Soward):
+    def __init__(self, client):
         self.client = client      
         self.headers = {"Authorization": f"Bot MTAwNDI0ODUxMzQzNTE1MjQ4NA.Gn9shC.zvlZHy1KrvCKB0m4WXjBBB9XvGmBzHBN3Tvcy4"}
         print(f"Cog Loaded: {self.__class__.__name__}")

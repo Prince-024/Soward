@@ -200,7 +200,7 @@ class games(commands.Cog):
                 for key, value in emojis.items(): 
                     if value == str(ctx.reacted):
                         description = "**{0}** was not the imposter...".format(key)
-                        embed = get_embed("Defeat", description, discord.Color.red())
+                        embed = get_embed("Defeat", description, color=0xFF1B1B)
                         await ctx.send(embed=embed)
                         break
 
@@ -277,7 +277,7 @@ class games(commands.Cog):
                 for x, option in enumerate(options):
                     description += '\n {} {}'.format(reactions[x], option)
 
-                embed = discord.Embed(title=question.content, description=''.join(description), color=discord.Colour(0x2f3136))
+                embed = discord.Embed(title=question.content, description=''.join(description), color=discord.Colour(0xFF1B1B))
                 embed.set_footer(text='Answer using the reactions below⬇')
                 quiz_message = await ctx.send(embed=embed)
                 for reaction in reactions:

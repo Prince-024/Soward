@@ -3,7 +3,7 @@ import json
 from discord.ext import commands
 from discord.ui import Button, View
 from .utils.config import *
-from core.Soward import Soward
+#from core.Soward import Soward
 from core import Context
 class errors(commands.Cog):
     def __init__(self, bot):
@@ -46,18 +46,18 @@ class errors(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
     
-      with open("prefixes.json", "r") as f:
-       idk = json.load(f)
-      if str(message.guild.id) in idk:
-          idkprefix = idk[str(message.guild.id)]
-      if str("<@1004248513435152484>") in message.content:
+   #   with open("prefixes.json", "r") as f:
+    #   idk = json.load(f)
+    #  if str(message.guild.id) in idk:
+   #       idkprefix = idk[str(message.guild.id)]
+      if str("<@1013771497157972008>") in message.content:
 
           b2 = Button(label='support', style=discord.ButtonStyle.link, url='https://dsc.gg/meta-development')
           view = View()
         #  view.add_item(b)
           view.add_item(b2)
           author = message.author
-          embed = discord.Embed(title='**Soward**', description=f'**If you like Soward, Consider [voting](https://discordbotlist.com/bots/zenox-5355/upvote) or [inviting](https://dsc.gg/soward) it to your server! Thank you for using Soward, we hope you enjoy it, as we always look forward to improve the bot\n\n   To view my commands user `{idkprefix}help` You can change my prefix using `{idkprefix}setprefix <new prefix>**', color=0x2f3136)
+          embed = discord.Embed(title='**Soward**', description=f'**If you like Soward, Consider [voting](https://discordbotlist.com/bots/zenox-5355/upvote) or [inviting](https://dsc.gg/soward) it to your server! Thank you for using Soward, we hope you enjoy it, as we always look forward to improve the bot\n\n   To view my commands user `help` You can change my prefix using `setprefix <new prefix>**', color=0x2f3136)
           embed.set_thumbnail(url=author.display_avatar.url)
           await message.channel.send(embed=embed, view=view)
 
