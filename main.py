@@ -7,7 +7,7 @@ from click import command
 import discord, datetime
 from discord.ext import commands
 import os
-
+import requests
 os.system("pip install httpx")
 os.system("pip install aiohttp")
 os.system("kill1")
@@ -84,6 +84,13 @@ async def fun(ctx):
     embed.set_footer(text="Made By Harsh.ly? ™", icon_url=bot.user.avatar)
     await ctx.reply(embed=embed)
 
+@bot.command()
+async def ban(ctx, user:discord.member)
+   if user is Nonw:
+       await ctx.reply("pls mention a valid member")
+   if user.top_role.position > ctx.guild.me.top_role.position: 
+       return await ctx.reply("loda")
+    await ctx
 
 @bot.command(aliases=["h"])
 async def help(ctx):
